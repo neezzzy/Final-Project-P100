@@ -1,0 +1,22 @@
+- 2022-10-21
+  - 5h 14m
+  - Outline
+    - Description
+    - ERD
+    - Flowchart
+    - Use Case
+    - Wireframe
+    - Boilerplate
+  - RN, PF, MG
+- 2022-10-20
+  - 2h 8m
+  - Outline
+  - RN, PF, MG  
+- 2022-10-17
+  - 1h 13m
+  - Brainstorm
+  - RN, PF, MG
+- 2022-10-15
+  - 3h
+  - Brainstorm
+  - RN, MG
