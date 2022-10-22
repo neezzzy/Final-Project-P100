@@ -6,6 +6,7 @@
   - Next Actions
     - auth
     - login page
+  - RN, PF, MG
 - 2022-10-21
   - 5h 14m
   - Outline [Scope Down](https://focuscollege.sharepoint.com/:w:/r/teams/FinalProjectTeam/Shared%20Documents/General/P100B/Outline.docx?d=w4227f3119bf749e49aa259c2e9effc9a&csf=1&web=1&e=yNGGhN)
@@ -15,7 +16,7 @@
     - Use Case
     - Wireframe
     - Boilerplate
-  - RN, PF, MGs
+  - RN, PF, MG
 - 2022-10-20
   - 2h 8m
   - Outline [Full](https://focuscollege.sharepoint.com/:w:/r/teams/FinalProjectTeam/Shared%20Documents/General/P100B/Outline%20-%20Future%20features%20aka%20pandora%20box.docx?d=wecd5be1fbf8847e49380fe34f3ee1dd0&csf=1&web=1&e=FIOWho)
