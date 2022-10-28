@@ -31,6 +31,9 @@ const NavBar = () => {
                 <Link to="/profile">Profile</Link>
               </li>
               <li>
+                <Link to="/authorize">Authorize</Link>
+              </li>
+              <li>
                 <Link to="#" onClick={() => logoutWithRedirect()}>
                   Log out
                 </Link>
