@@ -20,15 +20,19 @@ var jwtCheck = jwt({
           jwksRequestsPerMinute: 5,
           jwksUri: 'https://dev-8c172k4g8h4ugh58.us.auth0.com/.well-known/jwks.json'
     }),
-    audience: 'http://localhost:5173',
+    audience: 'http://localhost:8080',
     issuer: 'https://dev-8c172k4g8h4ugh58.us.auth0.com/',
     algorithms: ['RS256']
 });
 
 app.use(jwtCheck);
 
-app.get('/authorized', function (req, res) {
+app.get('/authorize', function (req, res) {
     res.send('Secured Resource');
+    console.log('Secure Resource');
+    res.json({
+        type: "private"
+    })
 });
 
 app.listen(port);
