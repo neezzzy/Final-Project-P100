@@ -8,6 +8,7 @@ import Profile from "./pages/Profile";
 import Dashboard from "./pages/Dashboard";
 import { useAuth0 } from "@auth0/auth0-react";
 import Authorize from "./pages/Authorize";
+// import Profiler from "./pages/Profiler";
 
 import "./App.css";
 
@@ -30,7 +31,7 @@ const App = () => {
         <Route path="/profile" element={<Profile />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/authorize" element={<Authorize />} />
-
+        {/* <Route path="/profiler" element={<Profiler />} /> */}
       </Routes>
       <Footer />
     </div>
