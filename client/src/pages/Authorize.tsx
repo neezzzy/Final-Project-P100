@@ -6,6 +6,8 @@ const Authorize = () => {
   const { user, isAuthenticated, getAccessTokenSilently } = useAuth0();
   const [data, setUserMetadata] = useState(null);
 
+// useEffect: when you make an API call
+// udpated when getAccessTokenSilently() is updated on ln 43
   useEffect(() => {
     const getUserMetadata = async () => {
       // const domain = "dev-tdz1zjoqa3dxpzkp.us.auth0.com";
