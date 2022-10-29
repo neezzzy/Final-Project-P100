@@ -11,8 +11,8 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
       domain={import.meta.env.VITE_DOMAIN}
       clientId={import.meta.env.VITE_CLIENT_ID}
       redirectUri={window.location.origin}
-      // audience={import.meta.env.VITE_AUDIENCE}
-      // scope="openid profile email"
+      audience="https://dev-tdz1zjoqa3dxpzkp.us.auth0.com/api/v2/"
+      scope="read:current_user update:current_user_metadata"
     >
       <BrowserRouter>
         <App />
