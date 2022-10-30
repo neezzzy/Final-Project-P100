@@ -8,6 +8,11 @@ import { errorHandler } from "./middleware/error.middleware";
 import { notFoundHandler } from "./middleware/not-found.middleware";
 
 dotenv.config();
+// add .env variables
+// PORT=6060
+// CLIENT_ORIGIN_URL=http://localhost:3000
+// AUTH0_AUDIENCE=https://hello-world.example.com
+// AUTH0_DOMAIN=
 
 if (!(process.env.PORT && process.env.CLIENT_ORIGIN_URL)) {
   throw new Error(

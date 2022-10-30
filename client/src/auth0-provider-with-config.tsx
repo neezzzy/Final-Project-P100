@@ -4,6 +4,13 @@ interface Auth0ProviderWithConfigProps {
   children: React.ReactNode;
 }
 
+// .env variables
+// VITE_AUTH0_DOMAIN=
+// VITE_AUTH0_CLIENT_ID=
+// VITE_AUTH0_CALLBACK_URL=http://localhost:3000
+// VITE_API_SERVER_URL=http://localhost:6060
+// VITE_AUTH0_AUDIENCE=https://hello-world.example.com
+
 export const Auth0ProviderWithConfig = ({
   children,
 }: PropsWithChildren<Auth0ProviderWithConfigProps>): JSX.Element | null => {
