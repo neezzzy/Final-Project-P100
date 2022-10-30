@@ -1,41 +1,43 @@
-import React from "react";
-import { Routes, Route } from "react-router-dom";
-import Loading from "./components/Loading";
-import NavBar from "./components/NavBar";
-import Footer from "./components/Footer";
-import Home from "./pages/Home";
-import Profile from "./pages/Profile";
-import Dashboard from "./pages/Dashboard";
 import { useAuth0 } from "@auth0/auth0-react";
-import Authorize from "./pages/Authorize";
-// import Profiler from "./pages/Profiler";
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { PageLoader } from "./components/page-loader";
+import { ProtectedRoute } from "./components/protected-route";
+import { AdminPage } from "./pages/admin-page";
+import { CallbackPage } from "./pages/callback-page";
+import { HomePage } from "./pages/home-page";
+import { NotFoundPage } from "./pages/not-found-page";
+import { ProfilePage } from "./pages/profile-page";
+import { ProtectedPage } from "./pages/protected-page";
+import { PublicPage } from "./pages/public-page";
 
-import "./App.css";
-
-const App = () => {
-  const { isLoading, error } = useAuth0();
-
-  if (error) {
-    return <div>Oops... {error.message}</div>;
-  }
+export const App: React.FC = () => {
+  const { isLoading } = useAuth0();
 
   if (isLoading) {
-    return <Loading />;
+    return <PageLoader />;
   }
 
   return (
-    <div id="app" className="container">
-      <NavBar />
+    <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/authorize" element={<Authorize />} />
-        {/* <Route path="/profiler" element={<Profiler />} /> */}
+        <Route path="/" element={<HomePage />} />
+        <Route
+          path="/profile"
+          element={<ProtectedRoute component={ProfilePage} />}
+        />
+        <Route path="/public" element={<PublicPage />} />
+        <Route
+          path="/protected"
+          element={<ProtectedRoute component={ProtectedPage} />}
+        />
+        <Route
+          path="/admin"
+          element={<ProtectedRoute component={AdminPage} />}
+        />
+        <Route path="/" element={<CallbackPage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
-      <Footer />
-    </div>
+    </BrowserRouter>
   );
 };
-
-export default App;
