@@ -1,3 +1,12 @@
+- 2022-10-22
+  - 3h 30m
+  - Worked on
+    - FlowChart
+    - GitHub Workflows
+  - Next Actions
+    - auth
+    - login page
+  - RN, PF, MG
 - 2022-10-21
   - 5h 14m
   - Outline [Scope Down](https://focuscollege.sharepoint.com/:w:/r/teams/FinalProjectTeam/Shared%20Documents/General/P100B/Outline.docx?d=w4227f3119bf749e49aa259c2e9effc9a&csf=1&web=1&e=yNGGhN)
