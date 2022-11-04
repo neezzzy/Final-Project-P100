@@ -5,8 +5,11 @@
   <body>
     <div class="container">
       <%- include ('partials/nav') %>
-      
         <h1>Dashboard</h1>
+        <%= JSON.stringify(data) %>
+          <button class="btn btn-primary">
+            <a href="/projects-add" class="nav-link ">Project Add</a>
+          </button>
     </div>
     <%- include ('partials/footer') %>
   </body>
