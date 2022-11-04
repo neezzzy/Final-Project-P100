@@ -6,10 +6,16 @@
     <div class="container">
       <%- include ('partials/nav') %>
         <h1>Dashboard</h1>
-        <%= JSON.stringify(data) %>
-          <button class="btn btn-primary">
-            <a href="/projects-add" class="nav-link ">Project Add</a>
-          </button>
+        <h2 class="jumbotron">
+          <%= JSON.stringify(data) %>
+        </h2>
+
+        <button class="btn btn-primary">
+          <a href="/projects-add" class="nav-link ">Project Add</a>
+        </button>
+        <button class="btn btn-primary">
+          <a href="/projects-signup" class="nav-link ">Project Sign Up</a>
+        </button>
     </div>
     <%- include ('partials/footer') %>
   </body>

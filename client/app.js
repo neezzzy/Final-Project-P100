@@ -29,7 +29,7 @@ const config = {
   authorizationParams: {
     response_type: "code",
     audience: "http://localhost:5000",
-    scope: "openid profile email read:products",
+    scope: "openid profile email",
   },
 };
 
@@ -45,9 +45,9 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 
 // catch 404 and forward to error handler
-app.use(function (req, res, next) {
-  next(createError(404));
-});
+// app.use(function (req, res, next) {
+//   next(createError(404));
+// });
 
 // error handler
 app.use(function (err, req, res, next) {

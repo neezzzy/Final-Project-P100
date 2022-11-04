@@ -2,8 +2,27 @@
 <html lang="en">
 <%- include ('partials/header') %>
 
+
   <body>
     <div class="container">
+      <div id="toast" class="toast align-items-center bottom-0 start-50 translate-middle-x" role="alert"
+        aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+          <div class="toast-body">
+            <% if(isAuthenticated) { %>
+              <div class="jumbotron">
+                <h2>You are logged in</h2>
+              </div>
+              <% } %>
+                <% if(!isAuthenticated) { %>
+                  <div class="jumbotron">
+                    <h2>You are logged out</h2>
+                  </div>
+                  <% } %>
+          </div>
+        </div>
+
+      </div>
       <%- include ('partials/nav') %>
         <% if(isAuthenticated) { %>
           <div class="jumbotron">
@@ -12,6 +31,34 @@
           <% } %>
     </div>
     <%- include ('partials/footer') %>
+
+
+      <% if (isAuthenticated ){ %>
+        <script>
+          const isFirstView = localStorage.getItem('isFirstView') || '';
+          if (isFirstView !== true) {
+            localStorage.setItem('isFirstView', true);
+
+          }
+
+          if (!isFirstView) {
+            const myToastEl = document.getElementById('toast')
+            bootstrap.Toast.getOrCreateInstance(myToastEl).show()
+          }
+        </script>
+        <% } %>
+
+
+          <% if (!isAuthenticated) { %>
+            <script>
+              if (localStorage.getItem('isFirstView') === true) {
+                localStorage.setItem('isFirstView', false);
+                const myToastEl = document.getElementById('toast')
+                bootstrap.Toast.getOrCreateInstance(myToastEl).show()
+              }
+            </script>
+            <% } %>
+
   </body>
 
 </html>
