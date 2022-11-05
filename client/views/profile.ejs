@@ -6,6 +6,15 @@
     <div class="container">
       <%- include ('partials/nav') %>
         <h1>Profile</h1>
+        <div class="card" style="width: 18rem;">
+          <img src="<%= user.picture %>" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title"><%= user.name %></h5>
+            <p class="card-text"><%= user.nickname %></p>
+            <p class="card-text"><%= user.sub %></p>
+            <a href="mailto:<%= user.email %>" class="btn btn-primary"><%= user.email %></a>
+          </div>
+        </div>
     </div>
     <%- include ('partials/footer') %>
   </body>

@@ -32,7 +32,8 @@ router.get("/projects", async (req, res, next) => {
 
 router.get("/profile", requiresAuth(), function (req, res, next) {
   let isAuthenticated = req.oidc.isAuthenticated();
-  res.render("profile", { title: "Profile", isAuthenticated });
+  let user = req.oidc.user;
+  res.render("profile", { title: "Profile", isAuthenticated, user });
 });
 
 router.get("/dashboard", requiresAuth(), async function (req, res) {
