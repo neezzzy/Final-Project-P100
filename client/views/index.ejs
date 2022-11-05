@@ -2,27 +2,31 @@
 <html lang="en">
 <%- include ('partials/header') %>
 
-
   <body>
+    <!-- Toast -->
     <div class="container">
-      <div id="toast" class="toast align-items-center bottom-0 start-50 translate-middle-x" role="alert"
-        aria-live="assertive" aria-atomic="true">
-        <div class="d-flex">
-          <div class="toast-body">
-            <% if(isAuthenticated) { %>
-              <div class="jumbotron">
-                <h2>You are logged in</h2>
-              </div>
-              <% } %>
-                <% if(!isAuthenticated) { %>
-                  <div class="jumbotron">
-                    <h2>You are logged out</h2>
-                  </div>
-                  <% } %>
+      <div class="toast-container position-absolute p-3 top-0 start-50 translate-middle-x">
+        <div id="toast" class="toast align-items-center" role="alert"
+          aria-live="assertive" aria-atomic="true">
+          <div class="d-flex justify-content-center">
+            <div class="toast-body">
+              <% if(isAuthenticated) { %>
+                <div class="jumbotron">
+                  <h2>You are logged in</h2>
+                </div>
+                <% } %>
+                  <% if(!isAuthenticated) { %>
+                    <div class="jumbotron">
+                      <h2>You are logged out</h2>
+                    </div>
+                    <% } %>
+            </div>
           </div>
         </div>
-
       </div>
+    </div>
+
+    <div class="container">
       <%- include ('partials/nav') %>
         <% if(isAuthenticated) { %>
           <div class="jumbotron">
@@ -60,5 +64,4 @@
             <% } %>
 
   </body>
-
 </html>
