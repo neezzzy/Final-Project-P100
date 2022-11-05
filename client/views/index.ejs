@@ -3,62 +3,59 @@
 <%- include ('partials/header') %>
 
   <body>
-    <!-- Toast -->
-    <div class="container">
-      <div class="toast-container position-absolute p-3 top-0 start-50 translate-middle-x">
-        <div id="toast" class="toast align-items-center" role="alert"
-          aria-live="assertive" aria-atomic="true">
-          <div class="d-flex justify-content-center">
-            <div class="toast-body">
-              <div class="jumbotron">
-                <% if(isAuthenticated) { %>
-                  <h2>You are logged in.</h2>
-                  <% } else { %>
-                  <h2>You are logged out.</h2>
-                <% } %>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+	<!-- Toast -->
+	<div class="container">
+	  <div class="toast-container position-absolute p-3 top-0 start-50 translate-middle-x">
+		<div id="toast" class="toast align-items-center" role="alert"
+		  aria-live="assertive" aria-atomic="true">
+		  <div class="d-flex justify-content-center">
+			<div class="toast-body">
+			  <div class="jumbotron">
+				<% if(isAuthenticated) { %>
+				  <h2>You are logged in.</h2>
+				  <% } else { %>
+				  <h2>You are logged out.</h2>
+				<% } %>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	</div>
 
-    <div class="container">
-      <%- include ('partials/nav') %>
-        <% if(isAuthenticated) { %>
-          <div class="jumbotron">
-            <h2>This is jumbotron</h2>
-          </div>
-          <% } %>
-    </div>
-    <%- include ('partials/footer') %>
-
-
-      <% if (isAuthenticated ){ %>
-        <script>
-          const isFirstView = localStorage.getItem('isFirstView') || '';
-          if (isFirstView !== true) {
-            localStorage.setItem('isFirstView', true);
-
-          }
-
-          if (!isFirstView) {
-            const myToastEl = document.getElementById('toast')
-            bootstrap.Toast.getOrCreateInstance(myToastEl).show()
-          }
-        </script>
-        <% } %>
-
-
-          <% if (!isAuthenticated) { %>
-            <script>
-              if (localStorage.getItem('isFirstView') === true) {
-                localStorage.setItem('isFirstView', false);
-                const myToastEl = document.getElementById('toast')
-                bootstrap.Toast.getOrCreateInstance(myToastEl).show()
-              }
-            </script>
-            <% } %>
+	<div class="container">
+	  <%- include ('partials/nav') %>
+		<% if(isAuthenticated) { %>
+		  <div class="jumbotron">
+			<h2>This is jumbotron</h2>
+		  </div>
+		  <% } %>
+	</div>
+	<%- include ('partials/footer') %>
+	
+	<!-- Toast Code -->
+	<% if (isAuthenticated ){ %>
+		<script>
+			const isFirstView = localStorage.getItem('isFirstView') || '';
+			
+			// localStorage only stores strings
+			if (isFirstView !== "true") {
+				localStorage.setItem('isFirstView', true);
+				const myToastEl = document.getElementById('toast')
+				bootstrap.Toast.getOrCreateInstance(myToastEl).show()
+			}
+		</script>
+	<% } %>
+	
+	<% if (!isAuthenticated) { %>
+		<script>
+			if (localStorage.getItem('isFirstView') === "true") {
+				localStorage.setItem('isFirstView', false);
+				const myToastEl = document.getElementById('toast')
+				bootstrap.Toast.getOrCreateInstance(myToastEl).show()
+			}
+		</script>
+	<% } %>
 
   </body>
 </html>
