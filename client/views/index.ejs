@@ -10,16 +10,13 @@
           aria-live="assertive" aria-atomic="true">
           <div class="d-flex justify-content-center">
             <div class="toast-body">
-              <% if(isAuthenticated) { %>
-                <div class="jumbotron">
-                  <h2>You are logged in</h2>
-                </div>
+              <div class="jumbotron">
+                <% if(isAuthenticated) { %>
+                  <h2>You are logged in.</h2>
+                  <% } else { %>
+                  <h2>You are logged out.</h2>
                 <% } %>
-                  <% if(!isAuthenticated) { %>
-                    <div class="jumbotron">
-                      <h2>You are logged out</h2>
-                    </div>
-                    <% } %>
+              </div>
             </div>
           </div>
         </div>
