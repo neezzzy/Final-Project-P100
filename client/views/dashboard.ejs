@@ -6,16 +6,34 @@
     <div class="container">
       <%- include ('partials/nav') %>
         <h1>Dashboard</h1>
-        <h2 class="jumbotron">
+        <h2 class="lead">
           <%= JSON.stringify(data) %>
         </h2>
 
-        <button class="btn btn-primary">
-          <a href="/projects-add" class="nav-link ">Project Add</a>
-        </button>
-        <button class="btn btn-primary">
-          <a href="/projects-signup" class="nav-link ">Project Sign Up</a>
-        </button>
+        <div class="row row-cols-1 row-cols-lg-2 align-items-stretch g-4 py-5">
+          <div class="col">
+            <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg dashboard-button" style="background-image: url('images/company.jpg');">
+              <div class="d-flex flex-column align-items-center h-100 p-5 text-white text-shadow-1">
+                <h3 class="pt-5 mb-4 display-6 lh-1 fw-bold">Companies</h3>
+                <button class="btn btn-primary border">
+                  <a href="/projects-add" class="nav-link ">Project Add</a>
+                </button>
+              </div>
+            </div>
+          </div>
+    
+          <div class="col">
+            <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg dashboard-button" style="background-image: url('images/student.jpg');">
+              <div class="d-flex flex-column align-items-center h-100 p-5 text-white text-shadow-1">
+                <h3 class="pt-5 mb-4 display-6 lh-1 fw-bold">Students</h3>
+                <button class="btn btn-primary border">
+                  <a href="/projects-signup" class="nav-link ">Project Sign Up</a>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
     </div>
     <%- include ('partials/footer') %>
   </body>

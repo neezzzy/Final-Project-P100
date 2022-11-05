@@ -5,3 +5,13 @@
 .logo-font {
     font-family: Bangers;
 }
+.dashboard-button {
+    background-position: center;
+    background-size: cover;
+}
+.dashboard-button:hover {
+    background-blend-mode: luminosity;
+}
+.dashboard-button h3 {
+    text-shadow: 1px 1px black;
+}
