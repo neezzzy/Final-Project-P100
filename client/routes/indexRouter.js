@@ -8,9 +8,6 @@ const {
   claimCheck,
 } = require("express-openid-connect");
 
-
-
-
 router.get("/", function (req, res, next) {
   let isAuthenticated = req.oidc.isAuthenticated();
   res.render("index", { title: "Home", isAuthenticated });
@@ -83,12 +80,17 @@ router.get("/projects-signup", requiresAuth(), async (req, res) => {
       data,
     });
   } else {
-    res.redirect("/not-found");
+    res.redirect("/forbidden");
   }
 });
 
+router.get("/forbidden", (req, res) => {
+  let isAuthenticated = req.oidc.isAuthenticated();
+  res.render("forbidden", { title: "403 UNAUTHORIZED", isAuthenticated });
+});
+
 router.get("/not-found", (req, res) => {
-  res.render("404", { title: "404 not found" });
+  res.render("404", { title: "404 NOT FOUND" });
 });
 
 router.get("/projects-add", requiresAuth(), async function (req, res) {
@@ -115,7 +117,7 @@ router.get("/projects-add", requiresAuth(), async function (req, res) {
       data,
     });
   } else {
-    res.redirect("/not-found");
+    res.redirect("/forbidden");
   }
 });
 

@@ -2,16 +2,17 @@
 <html lang="en">
 
 <%- include ('partials/header') %>
-
-<div class="page-wrap d-flex flex-row align-items-center">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-12 text-center">
-        <span class="display-1 d-block">404</span>
-        <div class="mb-4 lead">The page you are looking for was not found.</div>
-        <button class="btn btn-primary" onclick="history.back()">Go BACK</button>
-        <a href="/" class="btn btn-link">Go Home</a>
+  <div class="vh-100 d-flex justify-content-center align-items-center">
+    <div class="flex-row">
+      <div class="row justify-content-center">
+        <div class="col-md-12 text-center">
+          <span class="display-1 d-block">
+            <%= title %>
+          </span>
+          <div class="mb-4 lead">The page you are looking for was not found.</div>
+          <button class="btn btn-primary" onclick="history.back()">Go BACK</button>
+          <a href="/" class="btn btn-link">Go Home</a>
+        </div>
       </div>
     </div>
   </div>
-</div>

@@ -1,17 +1,17 @@
 .logo {
-    font-family: Bangers;
-    font-size: xx-large;
+  font-family: Bangers;
+  font-size: xx-large;
 }
 .logo-font {
-    font-family: Bangers;
+  font-family: Bangers;
 }
 .dashboard-button {
-    background-position: center;
-    background-size: cover;
+  background-position: center;
+  background-size: cover;
 }
 .dashboard-button:hover {
-    background-blend-mode: luminosity;
+  background-blend-mode: luminosity;
 }
 .dashboard-button h3 {
-    text-shadow: 1px 1px black;
+  text-shadow: 1px 1px black;
 }
