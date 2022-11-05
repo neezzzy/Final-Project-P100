@@ -57,6 +57,7 @@ app.get("/projects-add", jwtCheck, checkPermissionCompany, (req, res) => {
 app.get("/projects-signup", jwtCheck, checkPermissionStudent, (req, res) => {
   res.json({
     type: "You are a student :P",
+    canLogIn: true,
   });
 });
 
