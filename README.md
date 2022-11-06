@@ -1,5 +1,5 @@
 # AWSC208.Assignment1
-{{Insert Image}}
+![CampusConnect-HomeScreen](https://user-images.githubusercontent.com/3792666/200188379-d22337db-50d9-4a45-bd2e-32549387b853.png)
 
 Our assignment is a Node.js, Express, and EJS project for Web Development: Advanced Web Scripting Concepts called Campus Connect.
 
@@ -8,7 +8,7 @@ Campus Connect is intended to help junior developers or graduate students to gai
 Hiring a new employee can be time consuming and costly for companies. Campus Connect's objective is to connect companies who are looking to hire - to students to develop projects.
 
 # Video Walkthrough
-{{Insert Video}}
+[![CampusConnect-Assignment1-VideoWalkThru](https://user-images.githubusercontent.com/3792666/200188384-05a6ac98-a41e-44bb-88a8-cec249ccfbed.png)](https://www.youtube.com/watch?v=aS8dmHsOQKw&ab_channel=YottaPrep)
 
 # Assignment Requirements
 
@@ -35,7 +35,7 @@ Hiring a new employee can be time consuming and costly for companies. Campus Con
 
 ### Environment Variables
 
-To run this project, you will need to add the following environment variables to your `.env` file
+To run this project, you will need to add the following environment variables to your `.env` files
 
 You will get these by creating an `Application` and an `API` at https://auth0.com/
 
