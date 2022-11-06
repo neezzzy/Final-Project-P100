@@ -7,6 +7,16 @@ Campus Connect is intended to help junior developers or graduate students to gai
 
 Hiring a new employee can be time consuming and costly for companies. Campus Connect's objective is to connect companies who are looking to hire - to students to develop projects.
 
+# Screenshots
+
+![Dashboard](https://user-images.githubusercontent.com/3792666/200189545-6a04b151-1382-4848-8cc8-8104ca7f3f2b.png)
+
+![Projects-Desktop](https://user-images.githubusercontent.com/3792666/200189543-f4809d46-2edc-4b7d-8ecb-55d710beef4d.png)
+
+![Dashboard-Mobile](https://user-images.githubusercontent.com/3792666/200189546-d0c9fc74-68aa-4e66-9b3b-9b4bb28255f9.png)
+![Home-Mobile](https://user-images.githubusercontent.com/3792666/200189547-ff637324-3909-4fa6-84dc-b9902262806a.png)
+
+
 # Video Walkthrough
 [![CampusConnect-Assignment1-VideoWalkThru](https://user-images.githubusercontent.com/3792666/200188384-05a6ac98-a41e-44bb-88a8-cec249ccfbed.png)](https://www.youtube.com/watch?v=aS8dmHsOQKw&ab_channel=YottaPrep)
 
