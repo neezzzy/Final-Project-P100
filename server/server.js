@@ -10,7 +10,6 @@ const { expressjwt: jwt } = require("express-jwt");
 const jwks = require("jwks-rsa");
 const jwtAuthz = require("express-jwt-authz");
 const bodyparser = require("body-parser");
-const { claimEquals } = require('express-openid-connect');
 
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: true }));
@@ -55,7 +54,7 @@ app.get("/dashboard", jwtCheck, (req, res) => {
   });
 });
 
-app.get("/projects-add", jwtCheck, claimEquals('company', true), (req, res) => {
+app.get("/projects-add", jwtCheck, checkPermissionCompany, (req, res) => {
   res.json({
     type: "You are a company :P",
     canLogIn: true,

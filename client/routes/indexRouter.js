@@ -2,10 +2,7 @@ const express = require("express");
 const axios = require("axios");
 const router = express.Router();
 const {
-  requiresAuth,
-  claimEquals,
-  claimIncludes,
-  claimCheck,
+  requiresAuth
 } = require("express-openid-connect");
 
 router.get("/", function (req, res, next) {
@@ -30,7 +27,6 @@ router.get("/projects", async (req, res, next) => {
 router.get("/profile", requiresAuth(), function (req, res, next) {
   let isAuthenticated = req.oidc.isAuthenticated();
   let user = req.oidc.user;
-  console.log(user);
 res.render("profile", { title: "Profile", isAuthenticated, user,  });
 }); 
 
@@ -116,6 +112,7 @@ router.get("/projects-add", requiresAuth(), async function (req, res) {
       title: "Project Add",
       isAuthenticated,
       data,
+    
     });
   } else {
     res.redirect("/forbidden");
