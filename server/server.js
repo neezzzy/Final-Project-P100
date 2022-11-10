@@ -10,6 +10,7 @@ const { expressjwt: jwt } = require("express-jwt");
 const jwks = require("jwks-rsa");
 const jwtAuthz = require("express-jwt-authz");
 const bodyparser = require("body-parser");
+
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: true }));
 
@@ -33,6 +34,8 @@ const checkPermissionCompany = jwtAuthz(["read:admin-messages"], {
 const checkPermissionStudent = jwtAuthz(["read:messages"], {
   customScopeKey: "permissions",
 });
+
+
 
 app.get("/projects", (req, res) => {
   res.json({
