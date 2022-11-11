@@ -1,0 +1,1 @@
+The app is a project board where students can find a project in their area. Employers can add project to our app database. App’s roles: Admin, student user, employer user. Goal of our app is to serve as a project board to connect students to companies.  

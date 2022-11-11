@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include ('partials/header') %>
+
+    <div class="vh-100 d-flex justify-content-center align-items-center ">
+      <div class="page-wrap d-flex flex-row align-items-center">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-md-12 text-center">
+              <span class="display-1 d-block">
+                <%= title %>
+              </span>
+              <div class="mb-4 lead">You don't have access to this page.</div>
+              <button class="btn btn-primary" onclick="history.back()">Go BACK</button>
+              <a href="/" class="btn btn-link">Go Home</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

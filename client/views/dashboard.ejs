@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include ('partials/header') %>
+
+  <body>
+    <div class="container">
+      <%- include ('partials/nav') %>
+        <h1>Dashboard</h1>
+        <h2 class="lead">
+          <%= JSON.stringify(data) %>
+        </h2>
+
+        <div class="row gap-4">
+          <div class="col-12 col-md dashboard-button-wrapper rounded-4 shadow-lg overflow-hidden nopadding">
+            <img class="card-img-bg" src="images/company.jpg" />
+            <div class="d-flex flex-column justify-content-center align-items-center text-white text-shadow-1 overlay">
+              <h3 class="title pt-5 mb-4 display-6 lh-1 fw-bold">Companies</h3>
+              <button class="btn btn-danger btn-lg">
+                <a href="/projects-add" class="nav-link stretched-link">Add Project</a>
+              </button>
+            </div>
+          </div>
+
+          <div class="col-12 col-md dashboard-button-wrapper rounded-4 shadow-lg overflow-hidden nopadding">
+            <img class="card-img-bg" src="images/student.jpg" />
+            <div class="d-flex flex-column justify-content-center align-items-center text-white text-shadow-1 overlay ">
+              <h3 class="title pt-5 mb-4 display-6 lh-1 fw-bold">Students</h3>
+              <button class="btn btn-danger btn-lg">
+                <a href="/projects-signup" class="nav-link stretched-link">Sign Up</a>
+              </button>
+            </div>
+          </div>
+        </div>
+
+    </div>
+    <%- include ('partials/footer') %>
+  </body>
+
+</html>
