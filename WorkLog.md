@@ -1,0 +1,99 @@
+- 2022-11-09
+  - 2h
+  - Worked on
+    - Deliverable 1
+  - RN,PF,MG 
+  - Next Actions
+  - DB connection
+  - MVC Refactor
+- 2022-11-08
+  - 2h
+  - Worked on
+    - Create action flow on Auth0
+    - Add claim role to display user data
+  - RN,PF,MG
+- 2022-11-07
+  - 2h
+  - Worked on
+    - Fix responsiveness
+  - RN,PF,MG
+- 2022-11-06
+  - 3h
+  - Worked on
+    - Update ReadME
+    - Add style to buttons add blur add animation
+  - RN,MG
+  - Next Actions
+  - Add custom claim
+- 2022-11-05
+  - 3h 
+  - Worked on
+    - Student Product Sign Up Page
+    - Add logo
+    - Profile Card
+    - Dashboard Buttons
+  - MG
+- 2022-11-04
+  - 5h
+  - Worked on
+    - Add Routes/End Points
+    - Add toast 
+    - 404 page
+  - RN,PF,MG
+- 2022-11-02
+  - 2h
+  - Worked on
+    - Switch to EJS (instead of TypeScript)
+  - RN,PF,MG
+- 2022-10-30
+  - 3h
+  - Worked on
+    - Add protected routes
+  - RN,PF,MG
+- 2022-10-29
+  - 6h
+  - Worked on
+    - Get client token from Auth0
+  - RN,PF,MG
+  - Next Actions
+    - Protected routes
+- 2022-10-28
+  - 4h 30m
+  - Worked on 
+    - Connecting Client to Server (CORS)
+  - RN,PF,MG
+  - Next Actions
+    - JWT access token
+- 2022-10-22
+  - 3h 30m
+  - Worked on
+    - FlowChart
+    - GitHub Workflows
+  - Next Actions
+    - auth
+    - login page
+  - RN, PF, MG
+- 2022-10-21
+  - 5h 14m
+  - Outline [Scope Down](https://focuscollege.sharepoint.com/:w:/r/teams/FinalProjectTeam/Shared%20Documents/General/P100B/Outline.docx?d=w4227f3119bf749e49aa259c2e9effc9a&csf=1&web=1&e=yNGGhN)
+    - Description
+    - ERD
+    - Flowchart
+    - Use Case
+    - Wireframe
+    - Boilerplate
+  - RN, PF, MG
+- 2022-10-20
+  - 2h 8m
+  - Outline [Full](https://focuscollege.sharepoint.com/:w:/r/teams/FinalProjectTeam/Shared%20Documents/General/P100B/Outline%20-%20Future%20features%20aka%20pandora%20box.docx?d=wecd5be1fbf8847e49380fe34f3ee1dd0&csf=1&web=1&e=FIOWho)
+  - RN, PF, MG  
+- 2022-10-17
+  - 1h 13m
+  - Worked on
+    -   Brainstorm [Miro Whiteboard](https://miro.com/app/board/uXjVPM2qjiE=/)
+  - RN, PF, MG
+- 2022-10-15
+  - 3h
+  - Worked on
+    - Brainstorm
+  - RN, MG
