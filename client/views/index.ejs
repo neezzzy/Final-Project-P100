@@ -30,14 +30,14 @@
 				</div>
 			</div>
 	</div>
-	
+
 	<%- include ('partials/footer') %>
-	
+
 	<!-- Toast Code -->
 	<% if (isAuthenticated ){ %>
 		<script>
 			const isFirstView = localStorage.getItem('isFirstView') || '';
-			
+
 			// localStorage only stores strings
 			if (isFirstView !== "true") {
 				localStorage.setItem('isFirstView', true);
@@ -46,7 +46,7 @@
 			}
 		</script>
 	<% } %>
-	
+
 	<% if (!isAuthenticated) { %>
 		<script>
 			if (localStorage.getItem('isFirstView') === "true") {

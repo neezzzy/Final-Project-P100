@@ -2,51 +2,49 @@
 <html lang="en">
 <%- include ('partials/header') %>
 
-  <body>
-    <div class="container">
-      <%- include ('partials/nav') %>
-        <h1>Projects</h1>
-        <div class="row d-flex justify-content-center align-items-center">
-          <% projects.forEach(project=> { %>
-            <div class="card mb-3">
-              <div class='row g-0'>
-                <div class='col-md-4 d-flex'>
-                  <img src="<%= project.image %>" class="img-fluid p-3 w-100" alt="project image">
-                </div>
-                <div class='col-md-8'>
-                  <div class="card-body">
-                    <h4 class="card-title">
-                      <%= project.name %>
-                    </h4>
-                    <p class="card-text">
-                      <span class="fw-bold">Description</span>
-                      <%= project.description %>
-                    </p>
-                    <p class="card-text">
-                      <span class="fw-bold">Location:</span>
-                      <%= project.location %>
-                    </p>
-                    <p class="card-text">Start Date: <%= project.startDate %>
-                    </p>
-                    <p class="card-text">End Date: <%= project.endDate %>
-                    </p>
-                    <p class="card-text">Created at: <%= project.createdAt %>
-                    </p>
-                    <p class="card-text">Updated at: <%= project.updatedAt %>
-                    </p>
-                    <p class="card-text">Project ID: <%= project.id %>
-                    </p>
-                  </div>
-                </div>
+  <body class="container">
+    <%- include ('partials/nav') %>
+      <h1>Projects</h1>
+
+      <% projects.forEach(project=> { %>
+        <div class="card mb-3">
+          <div class='row g-0'>
+            <div class='col-md-4'>
+              <img src="<%= project.image %>" class="img-fluid p-3 w-100" alt="project image">
+            </div>
+            <div class='col-md-8'>
+              <div class="card-body">
+                <h4 class="card-title">
+                  <%= project.name %>
+                </h4>
+                <p class="card-text">
+                  <span class="fw-bold">Description</span>
+                  <%= project.description %>
+                </p>
+                <p class="card-text">
+                  <span class="fw-bold">Location:</span>
+                  <%= project.location %>
+                </p>
+
+                <a class=" btn btn-danger text-decoration-none" href="/projects-signup"> Apply Now </a>
+
+                <p class="card-text">Start Date: <%= project.startDate %>
+                </p>
+                <p class="card-text">End Date: <%= project.endDate %>
+                </p>
+                <p class="card-text">Created at: <%= project.createdAt %>
+                </p>
+                <p class="card-text">Updated at: <%= project.updatedAt %>
+                </p>
+                <p class="card-text">Project ID: <%= project.id %>
+                </p>
               </div>
             </div>
+          </div>
         </div>
 
-    </div>
-    <% }) %>
-      </div>
-      </div>
-      <%- include ('partials/footer') %>
+        <% }) %>
+          <%- include ('partials/footer') %>
   </body>
 
 </html>

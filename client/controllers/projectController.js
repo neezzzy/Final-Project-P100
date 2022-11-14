@@ -19,14 +19,14 @@ module.exports = {
       name: req.body.projectName,
       description: req.body.projectDescription,
       location: req.body.projectLocation,
-      image: req.body.projectImage,
+      image: req.oidc.user.picture,
       startDate: req.body.projectStartDate,
       endDate: req.body.projectEndDate,
     });
 
     projectDetails.save(function (err) {
       if (err) throw err;
-      res.redirect("/");
+      res.redirect("/projects");
     });
   },
 };
