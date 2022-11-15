@@ -39,11 +39,6 @@ const checkPermissionStudent = jwtAuthz(["read:messages"], {
 
 app.get("/projects", (req, res) => {
   res.json({
-    projects: [
-      {id: 1, title: "Project 1", description: "Project 1 Description", img: "https://www.placecage.com/250/250", startDate: 2023-01-01},
-      {id: 2, title: "Project 2", description: "Project 2 Description", img: "https://www.placecage.com/g/250/250", startDate: 2023-02-01},
-      {id: 3, title: "Project 3", description: "Project 3 Description", img: "https://www.placecage.com/c/250/250", startDate: 2023-04-01},
-      {id: 4, title: "Project 4", description: "Project 4 Description", img: "https://www.placecage.com/gif/250/250", startDate: 2023-02-15},]
   });
 });
 

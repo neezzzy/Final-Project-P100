@@ -2,34 +2,49 @@
 <html lang="en">
 <%- include ('partials/header') %>
 
-  <body>
-    <div class="container">
-      <%- include ('partials/nav') %>
-        <h1>Projects</h1>
+  <body class="container">
+    <%- include ('partials/nav') %>
+      <% projects.forEach(project=> { %>
+        <div class="card mb-3">
+          <div class='row g-0'>
+            <div class='col-md-4'>
+              <img src="<%= project.image %>" class="img-fluid p-3 w-100" alt="project image">
+            </div>
+            <div class='col-md-8'>
+              <div class="card-body">
+                <h4 class="card-title text-uppercase">
+                  <%= project.name %>
+                </h4>
+                <p class="card-text">
+                  <span class="fw-bold">Description</span>
+                  <%= project.description %>
+                </p>
+                <p class="card-text">
+                  <span class="fw-bold">Location:</span>
+                  <%= project.location %>
+                </p>
 
-        <!-- <%= JSON.stringify(data) %> -->
+                <a class="btn btn-primary text-decoration-none" href="/project-edit/<%=project.id %>">Edit</a>
 
-        <div class="row d-flex justify-content-center">
-          <% data.projects.forEach(project => { %>
-            <div class="card mb-3" style="max-width: 750px;">
-              <div class="row g-0">
-                <div class="col-md-4">
-                  <img src="<%= project.img %>" class="img-fluid rounded-start" alt="...">
-                </div>
-                <div class="col-md-8">
-                  <div class="card-body">
-                    <h5 class="card-title"><%= project.title %></h5>
-                    <p class="card-text"><%= project.description %></p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                    <p class="card-text"><small class="text-muted">Project ID: <%= project.id %></small></p>
-                  </div>
-                </div>
+                <a class="btn btn-danger text-decoration-none" href="/project-delete/<%=project.id%>">Delete</a>
+
+                <p class="card-text">Start Date: <%= project.startDate %>
+                </p>
+                <p class="card-text">End Date: <%= project.endDate %>
+                </p>
+                <p class="card-text">Created at: <%= project.createdAt %>
+                </p>
+                <p class="card-text">Updated at: <%= project.updatedAt %>
+                </p>
+                <p class="card-text">Project ID: <%= project.id %>
+                </p>
               </div>
             </div>
+          </div>
+        </div>
+
         <% }) %>
-      </div>
-    </div>
-    <%- include ('partials/footer') %>
+          <%- include ('partials/footer') %>
   </body>
 
 </html>
