@@ -18,11 +18,11 @@ const projectSchema = new mongoose.Schema(
       type: String,
     },
     startDate: {
-      type: Date,
+      type: String,
       required: true,
     },
     endDate: {
-      type: Date,
+      type: String,
       required: true,
     },
   },

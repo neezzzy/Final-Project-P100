@@ -1,5 +1,5 @@
 const Project = require("../models/projectModel");
-
+const moment = require("moment");
 module.exports = {
   fetchAllProjects: async function (req, res) {
     let isAuthenticated = req.oidc.isAuthenticated();
@@ -20,8 +20,8 @@ module.exports = {
       description: req.body.projectDescription,
       location: req.body.projectLocation,
       image: req.oidc.user.picture,
-      startDate: req.body.projectStartDate,
-      endDate: req.body.projectEndDate,
+      startDate: moment(req.body.projectStartDate).format("YYYY-MM-DD"),
+      endDate: moment(req.body.projectEndDate).format("YYYY-MM-DD"),
     });
 
     projectDetails.save(function (err) {
@@ -63,11 +63,10 @@ module.exports = {
         description: req.body.projectDescription,
         location: req.body.projectLocation,
         image: req.oidc.user.picture,
-        startDate: req.body.projectStartDate,
-        endDate: req.body.projectEndDate,
+        startDate: moment(req.body.projectStartDate).format("YYYY-MM-DD"),
+        endDate: moment(req.body.projectEndDate).format("YYYY-MM-DD"),
       });
       res.redirect("/projects");
-
     } catch (error) {
       console.log(error);
     }
