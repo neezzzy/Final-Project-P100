@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include ('partials/header') %>
+
+  <body>
+    <div class="container">
+      <%- include ('partials/nav') %>
+        <h2 class="text-center">Edit Project Form</h2>
+        <form action="/project-edit/<%=project.id%>" method="post">
+          <div class="form-group">
+            <label for="project_name">Enter project's name: </label>
+            <input value="<%=project.name%>" class="form-control" id="project_name" type="text" name="projectName" />
+          </div>
+
+          <div class="form-group">
+            <label for="projectDescription">Enter project's description: </label>
+            <input value="<%=project.description%>" class="form-control" id="project_description" type="text"
+              name="projectDescription" />
+          </div>
+
+          <div class="form-group">
+            <label for="project_location">Enter project's location: </label>
+            <input value="<%=project.location%>" class="form-control" id="project_location" type="text"
+              name="projectLocation" />
+          </div>
+
+          <div class="form-group">
+            <label for="project_startDate">Enter project's start date: </label>
+            <input value="<%=project.startDate%>" class="form-control" id="project_startDate" type="date"
+              name="projectStartDate" />
+          </div>
+
+          <div class="form-group">
+            <label for="project_endDate">Enter project's end date: </label>
+            <input value="<%=project.endDate%>" class="form-control" id="project_endDate" type="date"
+              name="projectEndDate" />
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+    <%- include ('partials/footer') %>
+  </body>
+
+</html>

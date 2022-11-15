@@ -8,7 +8,7 @@ router.get("/", function (req, res) {
   res.render("index", { title: "Home", isAuthenticated });
 });
 
-router.get("/projects", projectController.fetchAllProject);
+router.get("/projects", projectController.fetchAllProjects);
 
 router.get("/profile", requiresAuth(), function (req, res) {
   let isAuthenticated = req.oidc.isAuthenticated();
@@ -29,12 +29,16 @@ router.get("/projects-signup", requiresAuth(), async (req, res) => {
   });
 });
 
+router.get("/project-edit/:id", projectController.getProjectByID);
+router.get("/project-delete/:id", projectController.deleteProject);
+
 router.get("/projects-add", requiresAuth(), async function (req, res) {
   let isAuthenticated = req.oidc.isAuthenticated();
   res.render("projects-add", { title: "Project Add", isAuthenticated });
 });
 
 router.post("/projects-add", projectController.saveProject);
+router.post("/project-edit/:id", projectController.editProject);
 
 router.get("/forbidden", (req, res) => {
   let isAuthenticated = req.oidc.isAuthenticated();
