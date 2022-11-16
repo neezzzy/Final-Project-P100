@@ -18,7 +18,7 @@ Hiring a new employee can be time consuming and costly for companies. Campus Con
 
 
 # Video Walkthrough
-[![CampusConnect-Assignment1-VideoWalkThru](https://user-images.githubusercontent.com/3792666/200188384-05a6ac98-a41e-44bb-88a8-cec249ccfbed.png)](https://www.youtube.com/watch?v=aS8dmHsOQKw&ab_channel=YottaPrep)
+[![CampusConnect-Assignment1-VideoWalkThru](https://user-images.githubusercontent.com/3792666/200188384-05a6ac98-a41e-44bb-88a8-cec249ccfbed.png)](https://youtu.be/DbnELhVnAU0)
 
 # Assignment Requirements
 
