@@ -24,20 +24,24 @@
                   <%= project.location %>
                 </p>
 
-                <a class="btn btn-primary text-decoration-none" href="/project-edit/<%=project.id %>">Edit</a>
+                <% if (!isStudent) { %>
+                  <a class="btn btn-primary text-decoration-none" href="/project-edit/<%=project.id %>">Edit</a>
 
-                <a class="btn btn-danger text-decoration-none" href="/project-delete/<%=project.id%>">Delete</a>
+                  <a class="btn btn-danger text-decoration-none" href="/project-delete/<%=project.id%>">Delete</a>
+                  <% } %>
 
-                <p class="card-text">Start Date: <%= project.startDate %>
-                </p>
-                <p class="card-text">End Date: <%= project.endDate %>
-                </p>
-                <p class="card-text">Created at: <%= project.createdAt %>
-                </p>
-                <p class="card-text">Updated at: <%= project.updatedAt %>
-                </p>
-                <p class="card-text">Project ID: <%= project.id %>
-                </p>
+                    <a class="btn btn-danger text-decoration-none" href="/project-signup/<%=project.id%>">Sign Up</a>
+
+                    <p class="card-text">Start Date: <%= project.startDate %>
+                    </p>
+                    <p class="card-text">End Date: <%= project.endDate %>
+                    </p>
+                    <p class="card-text">Created at: <%= project.createdAt %>
+                    </p>
+                    <p class="card-text">Updated at: <%= project.updatedAt %>
+                    </p>
+                    <p class="card-text">Project ID: <%= project.id %>
+                    </p>
               </div>
             </div>
           </div>

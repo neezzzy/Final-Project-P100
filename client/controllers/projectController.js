@@ -5,7 +5,14 @@ module.exports = {
     let isAuthenticated = req.oidc.isAuthenticated();
     try {
       const projects = await Project.find();
-      res.render("projects", { title: "Projects", isAuthenticated, projects });
+      let user = req.oidc.user;
+      res.render("projects", {
+        title: "Projects",
+        isAuthenticated,
+        projects,
+        isStudent: user.role.includes("Student")
+
+      });
     } catch (err) {
       res.status(404).json({
         status: "fail",
@@ -13,6 +20,8 @@ module.exports = {
       });
     }
   },
+
+
 
   saveProject: async function (req, res) {
     const projectDetails = new Project({

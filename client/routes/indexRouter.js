@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const { requiresAuth } = require("express-openid-connect");
 const projectController = require("../controllers/projectController");
+const userController = require("../controllers/userController");
 
 router.get("/", function (req, res) {
   let isAuthenticated = req.oidc.isAuthenticated();
@@ -10,11 +11,7 @@ router.get("/", function (req, res) {
 
 router.get("/projects", projectController.fetchAllProjects);
 
-router.get("/profile", requiresAuth(), function (req, res) {
-  let isAuthenticated = req.oidc.isAuthenticated();
-  let user = req.oidc.user;
-  res.render("profile", { title: "Profile", isAuthenticated, user });
-});
+router.get("/profile", requiresAuth(), userController.fetchUserProfile);
 
 router.get("/dashboard", requiresAuth(), async function (req, res) {
   let isAuthenticated = req.oidc.isAuthenticated();
