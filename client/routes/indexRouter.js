@@ -38,6 +38,9 @@ router.get("/projects-add", requiresAuth(), async function (req, res) {
 router.post("/projects-add", projectController.saveProject);
 router.post("/project-edit/:id", projectController.editProject);
 
+router.get("/profile-edit/:id", userController.getProfileByID);
+router.post("/profile-edit/:id", userController.editProfile);
+
 router.get("/forbidden", (req, res) => {
   res.render("forbidden", {
     title: "403 UNAUTHORIZED",

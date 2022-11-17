@@ -20,4 +20,33 @@ module.exports = {
       console.log(error);
     }
   },
+
+  getProfileByID: async function (req, res) {
+    const userId = req.params.id;
+
+    try {
+      const user = await User.findById(userId);
+      res.render("profile-edit", {
+        user,
+        title: "Edit User",
+        isAuthenticated: req.isAuthenticated,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  },
+
+  editProfile: async function (req, res) {
+    try {
+      await User.findByIdAndUpdate(req.params.id, {
+        name: req.body.userName,
+        country: req.body.userCountry,
+        email: req.body.userEmail,
+      });
+
+      res.redirect("/profile");
+    } catch (error) {
+      console.log(error);
+    }
+  },
 };
