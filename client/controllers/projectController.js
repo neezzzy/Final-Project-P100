@@ -2,16 +2,14 @@ const Project = require("../models/projectModel");
 const moment = require("moment");
 module.exports = {
   fetchAllProjects: async function (req, res) {
-    let isAuthenticated = req.oidc.isAuthenticated();
     try {
       const projects = await Project.find();
       let user = req.oidc.user;
       res.render("projects", {
         title: "Projects",
-        isAuthenticated,
+        isAuthenticated: req.isAuthenticated,
         projects,
-        isStudent: user.role.includes("Student")
-
+        isStudent: user.role.includes("Student"),
       });
     } catch (err) {
       res.status(404).json({
@@ -20,8 +18,6 @@ module.exports = {
       });
     }
   },
-
-
 
   saveProject: async function (req, res) {
     const projectDetails = new Project({
@@ -41,13 +37,13 @@ module.exports = {
 
   getProjectByID: async function (req, res) {
     const projectId = req.params.id;
-    let isAuthenticated = req.oidc.isAuthenticated();
+
     try {
       const project = await Project.findById(projectId);
       res.render("project-edit", {
         project,
         title: "Edit Project",
-        isAuthenticated,
+        isAuthenticated: req.isAuthenticated,
       });
     } catch (error) {
       console.log(errorr);

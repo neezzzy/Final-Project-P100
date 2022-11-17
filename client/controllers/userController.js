@@ -2,8 +2,7 @@ const User = require("../models/userModel");
 const axios = require("axios");
 
 module.exports = {
-  fetchUserProfile: async function (req, res, next) {
-    let isAuthenticated = req.oidc.isAuthenticated();
+  fetchUserProfile: async function (req, res) {
     let userAuth0 = req.oidc.user;
     try {
       const user = await User.findOne({ email: userAuth0.email });
@@ -13,7 +12,7 @@ module.exports = {
 
       res.render("profile", {
         title: "Profile",
-        isAuthenticated,
+        isAuthenticated: req.isAuthenticated,
         user,
         data: response.data.results,
       });

@@ -37,7 +37,6 @@
 	<% if (isAuthenticated ){ %>
 		<script>
 			const isFirstView = localStorage.getItem('isFirstView') || '';
-
 			// localStorage only stores strings
 			if (isFirstView !== "true") {
 				localStorage.setItem('isFirstView', true);

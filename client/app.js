@@ -9,7 +9,7 @@ const cors = require("cors");
 const app = express();
 const mongoose = require("mongoose");
 const bodyparser = require("body-parser");
-
+const { isAuthenticated } = require("./middleware/authenticate");
 
 const config = {
   authRequired: false,
@@ -46,9 +46,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-
 // routes
-app.use("/", indexRouter);
+app.use("/", isAuthenticated, indexRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
