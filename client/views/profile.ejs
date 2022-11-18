@@ -29,7 +29,13 @@
             <div class="card ">
               <div class="card-body">
                 <h5 class="card-title">
-                  <%= data[0].name %>
+                  Company's name: <%= data[0].name %>
+                </h5>
+                <h5 class="card-title">
+                  Address: <%= data[0].address1 %>
+                </h5>
+                <h5 class="card-title">
+                  City: <%= data[0].city %>
                 </h5>
                 <h5 class="card-title">
                   Country: <%= data[0].country %>
@@ -38,7 +44,13 @@
                   State: <%= data[0].state %>
                 </h5>
                 <h5 class="card-title">
-                  City: <%= data[0].city %>
+                  Subsidiaries count: <%= data[0].subsidiaries_count %>
+                </h5>
+                <h5 class="card-title">
+                  Subsidiaries branch count: <%= data[0].branches_count %>
+                </h5>
+                <h5 class="card-title">
+                  Company status: <%= data[0].company_status %>
                 </h5>
                 <h5 class="card-title">
                   Role: <%= user.userType %>
