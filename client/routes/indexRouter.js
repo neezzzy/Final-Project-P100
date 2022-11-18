@@ -2,30 +2,26 @@ const express = require("express");
 const router = express.Router();
 const { requiresAuth } = require("express-openid-connect");
 const projectController = require("../controllers/projectController");
+const userController = require("../controllers/userController");
 
 router.get("/", function (req, res) {
-  let isAuthenticated = req.oidc.isAuthenticated();
-  res.render("index", { title: "Home", isAuthenticated });
+  res.render("index", { title: "Home", isAuthenticated: req.isAuthenticated });
 });
 
 router.get("/projects", projectController.fetchAllProjects);
-
-router.get("/profile", requiresAuth(), function (req, res) {
-  let isAuthenticated = req.oidc.isAuthenticated();
-  let user = req.oidc.user;
-  res.render("profile", { title: "Profile", isAuthenticated, user });
-});
+router.get("/profile", requiresAuth(), userController.fetchUserProfile);
 
 router.get("/dashboard", requiresAuth(), async function (req, res) {
-  let isAuthenticated = req.oidc.isAuthenticated();
-  res.render("dashboard", { title: "Dashboard", isAuthenticated });
+  res.render("dashboard", {
+    title: "Dashboard",
+    isAuthenticated: req.isAuthenticated,
+  });
 });
 
 router.get("/projects-signup", requiresAuth(), async (req, res) => {
-  let isAuthenticated = req.oidc.isAuthenticated();
   res.render("projects-signup", {
     title: "Projects Signup",
-    isAuthenticated,
+    isAuthenticated: req.isAuthenticated,
   });
 });
 
@@ -33,16 +29,23 @@ router.get("/project-edit/:id", projectController.getProjectByID);
 router.get("/project-delete/:id", projectController.deleteProject);
 
 router.get("/projects-add", requiresAuth(), async function (req, res) {
-  let isAuthenticated = req.oidc.isAuthenticated();
-  res.render("projects-add", { title: "Project Add", isAuthenticated });
+  res.render("projects-add", {
+    title: "Project Add",
+    isAuthenticated: req.isAuthenticated,
+  });
 });
 
 router.post("/projects-add", projectController.saveProject);
 router.post("/project-edit/:id", projectController.editProject);
 
+router.get("/profile-edit/:id", userController.getProfileByID);
+router.post("/profile-edit/:id", userController.editProfile);
+
 router.get("/forbidden", (req, res) => {
-  let isAuthenticated = req.oidc.isAuthenticated();
-  res.render("forbidden", { title: "403 UNAUTHORIZED", isAuthenticated });
+  res.render("forbidden", {
+    title: "403 UNAUTHORIZED",
+    isAuthenticated: req.isAuthenticated,
+  });
 });
 
 module.exports = router;
