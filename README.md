@@ -21,27 +21,11 @@ Hiring a new employee can be time consuming and costly for companies. Campus Con
 [![CampusConnect-Assignment1-VideoWalkThru](https://user-images.githubusercontent.com/3792666/200188384-05a6ac98-a41e-44bb-88a8-cec249ccfbed.png)](https://youtu.be/aV5Ezmz7f5A)
 
 # Assignment Requirements
+The objective of this assignment is to integrate any 3rd party API to your existing application
 
-> We have learned Authentication, Authorization, Secured API, and Role based authentication in class with EJS, Node, Express, and Auth0. In this assignment, we will be practicing all the topics we have covered in the class with React.
-
-> The application should have all the functionalities, but you must have your own input as well. For instance, after logging, there should be an appropriate page presented to a user.
-
-- Requirements
-	- Authentication (Login / Logout)
-		- message to user via pop / ajax
-			- "You are logged in" / "You are logged out"
-	- Protected Route
-		- fetch data from secured server
-	- Authorization (Role Based)
-            - Company
-            - Student
-		- redirect after login based on role
-		- 404 or error display if not authorized if not auth
-	- Submission
-		- Video
-		- Git Repo
-		- README.md with install instructions
-		- screenshots
+The followings are the suggestions that can be used, but feel free to use any 3rd party API as per your need or your application requirements
+Stripe
+Sendgrid
 
 ### Environment Variables
 
