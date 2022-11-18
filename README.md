@@ -1,4 +1,4 @@
-# AWSC208.Assignment1
+# AWSC208.Assignment3
 ![CampusConnect-HomeScreen](https://user-images.githubusercontent.com/3792666/200188379-d22337db-50d9-4a45-bd2e-32549387b853.png)
 
 Our assignment is a Node.js, Express, and EJS project for Web Development: Advanced Web Scripting Concepts called Campus Connect.
@@ -18,7 +18,7 @@ Hiring a new employee can be time consuming and costly for companies. Campus Con
 
 
 # Video Walkthrough
-[![CampusConnect-Assignment1-VideoWalkThru](https://user-images.githubusercontent.com/3792666/200188384-05a6ac98-a41e-44bb-88a8-cec249ccfbed.png)](https://www.youtube.com/watch?v=aS8dmHsOQKw&ab_channel=YottaPrep)
+[![CampusConnect-Assignment1-VideoWalkThru](https://user-images.githubusercontent.com/3792666/200188384-05a6ac98-a41e-44bb-88a8-cec249ccfbed.png)](https://youtu.be/aV5Ezmz7f5A)
 
 # Assignment Requirements
 
