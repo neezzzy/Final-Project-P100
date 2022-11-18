@@ -1,3 +1,17 @@
+- 2022-11-17
+- 1h
+  - Worked on
+    - Record Video
+  -RN, MG, PF 
+- 2022-11-16
+- 3h
+  - Worked on
+    - Add API
+    - Add Middleware
+  - Next Task     
+    - Record Video
+    - Submit Assignment
+  -RN, MG, PF
 - 2022-11-15
   - 1h
   - Worked on
