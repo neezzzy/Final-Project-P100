@@ -1,3 +1,44 @@
+- 2022-11-17
+- 1h
+  - Worked on
+    - Record Video
+  -RN, MG, PF 
+- 2022-11-16
+- 3h
+  - Worked on
+    - Add API
+    - Add Middleware
+  - Next Task     
+    - Record Video
+    - Submit Assignment
+  -RN, MG, PF
+- 2022-11-15
+  - 1h
+  - Worked on
+    - Record video
+    - Submit Assignment     
+- 2022-11-14
+  - 2h
+  - Worked on
+     - Edit Form
+     - Delete Operation 
+     - Deliverable 2 Complete
+  - Next Task
+    - Record Video
+- 2022-11-12
+  - 2h
+  - Worked on
+    - Add Form Operation 
+  - RN
+  - Next Action 
+   - Finish Deliverable 2
+- 2022-11-10
+- 3h
+  - Worked on 
+    - Add MongoDb
+  - RN,PF, MG
+  -  Next Actions
+  - Add CRUD Operations
 - 2022-11-09
   - 2h
   - Worked on
