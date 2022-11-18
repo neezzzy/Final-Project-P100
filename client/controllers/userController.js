@@ -45,6 +45,7 @@ module.exports = {
         name: req.body.userName,
         country: req.body.userCountry,
         email: req.body.userEmail,
+        image: req.body.userImage,
       });
 
       res.redirect("/profile");
