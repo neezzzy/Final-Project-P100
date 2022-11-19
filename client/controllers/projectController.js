@@ -5,11 +5,21 @@ module.exports = {
     try {
       const projects = await Project.find();
       let user = req.oidc.user;
+      let isStudent;
+      let isCompany;
+      if (user) {
+        isStudent = user.role.includes("Student");
+        isCompany = user.role.includes("Company");
+      } else {
+        isStudent = false;
+      }
+
       res.render("projects", {
         title: "Projects",
         isAuthenticated: req.isAuthenticated,
         projects,
-        isStudent: user.role.includes("Student"),
+        isStudent,
+        isCompany,
       });
     } catch (err) {
       res.status(404).json({
