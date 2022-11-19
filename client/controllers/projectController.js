@@ -1,3 +1,4 @@
+const User = require("../models/userModel");
 const Project = require("../models/projectModel");
 const moment = require("moment");
 module.exports = {
@@ -46,9 +47,29 @@ module.exports = {
         isAuthenticated: req.isAuthenticated,
       });
     } catch (error) {
-      console.log(errorr);
+      console.log(error);
     }
   },
+
+
+  addProject: async function (req, res) {
+    let userAuth0 = req.oidc.user;
+
+    try {
+      const user = await User.findOne({ email: userAuth0.email });
+      res.render("projects-add", {
+        title: "Project Add",
+        isAuthenticated: req.isAuthenticated,
+        user
+      });
+      console.log(user._id);
+
+    } catch (error) {
+      console.log(error);
+    }
+  },
+
+
 
   deleteProject: async function (req, res) {
     try {
