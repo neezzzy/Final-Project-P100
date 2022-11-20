@@ -15,40 +15,31 @@
                 <h4 class="card-title text-uppercase">
                   <%= project.name %>
                 </h4>
-                <p class="card-text">
-                  <span class="fw-bold">Description</span>
-                  <%= project.description %>
-                </p>
-                <p class="card-text">
-                  <span class="fw-bold">Location:</span>
-                  <%= project.location %>
-                </p>
 
+                <!-- Project Details -->
+                <p class="card-text"><span class="fw-bold">Project ID: </span><%= project.id %></p>
+                <p class="card-text"><span class="fw-bold">Company: </span>                  
+                  <% project.projectOwnerID.forEach(ID => { %>
+                    <%= ID.name %>
+                  <% }) %>
+                </p>
+                <p class="card-text"><span class="fw-bold">Description: </span><%= project.description %></p>
+                <p class="card-text"><span class="fw-bold">Location: </span><%= project.location %></p>
+                <p class="card-text"><span class="fw-bold">Start Date:</span> <%= project.startDate %></p>
+                <p class="card-text"><span class="fw-bold">End Date:</span> <%= project.endDate %></p>
+
+                <!-- Project Signup -->
                 <% if (!isStudent) { %>
                   <a class="btn btn-primary text-decoration-none" href="/project-edit/<%=project.id %>">Edit</a>
-
                   <a class="btn btn-danger text-decoration-none" href="/project-delete/<%=project.id%>">Delete</a>
-                  <% } %>
-
-                    <a class="btn btn-danger text-decoration-none" href="/project-signup/<%=project.id%>">Sign Up</a>
-
-                    <p class="card-text">Start Date: <%= project.startDate %>
-                    </p>
-                    <p class="card-text">End Date: <%= project.endDate %>
-                    </p>
-                    <p class="card-text">Created at: <%= project.createdAt %>
-                    </p>
-                    <p class="card-text">Updated at: <%= project.updatedAt %>
-                    </p>
-                    <p class="card-text">Project ID: <%= project.id %>
-                    </p>
+                <% } %>
+                <a class="btn btn-danger text-decoration-none" href="/project-signup/<%=project.id%>">Sign Up</a>
+                
               </div>
             </div>
           </div>
         </div>
-
-        <% }) %>
-          <%- include ('partials/footer') %>
+      <% }) %>
+    <%- include ('partials/footer') %>
   </body>
-
 </html>
