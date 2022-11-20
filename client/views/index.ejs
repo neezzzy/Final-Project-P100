@@ -2,59 +2,75 @@
 <html lang="en">
 <%- include ('partials/header') %>
 
-  <body>
-	<%- include ('partials/loginToast') %>
-
-	<div class="container">
-		<%- include ('partials/nav') %>
-			<div class="px-4 pt-5 my-5 text-center border-bottom">
-				<h1 class="display-4 fw-bold logo-font">Campus Connect</h1>
-				<div class="col-lg-6 mx-auto">
-					<p class="lead mb-4">Campus Connect is intended to help junior developers or graduate students to gain
-						experience while tracking their skill’s progress needed to achieve their.</p>
-					<p class="lead mb-4">Hiring a new employee can be time consuming and costly for companies. Campus
-						Connect's objective is to connect companies who are looking to hire - to students to develop
-						projects.</p>
-					<div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
-						<% if (!isAuthenticated ){ %>
-							<a href="/login" class="btn btn-primary btn-lg px-4 me-sm-3" role="button">Login</a>
-						<% } %>
-							<a href="/projects" class="btn btn-outline-secondary btn-lg px-4" role="button">View Projects</a>
+	<body>
+		<%- include ('partials/loginToast') %>
+			<div class="container">
+				<%- include ('partials/nav') %>
+					<div class="px-4 pt-5 my-5 text-center border-bottom ">
+						<h1 class="display-4 fw-bold logo-font">Campus Connect</h1>
+						<div class="col-lg-6 mx-auto">
+							<p class="lead mb-4">Campus Connect is intended to help junior developers or graduate students to gain
+								experience while tracking their skill’s progress needed to achieve their.</p>
+							<p class="lead mb-4">Hiring a new employee can be time consuming and costly for companies. Campus
+								Connect's objective is to connect companies who are looking to hire - to students to develop
+								projects.</p>
+							<div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
+								<% if (!isAuthenticated ){ %>
+									<a href="/login" class="btn btn-primary btn-lg px-4 me-sm-3" role="button">Login</a>
+									<% } %>
+										<a href="/projects" class="btn btn-outline-secondary btn-lg px-4" role="button">View Projects</a>
+							</div>
+						</div>
+						<div class="overflow-hidden" style="max-height: 30vh;">
+							<div class="container px-5">
+								<img src="/images/homepage-projects.jpg" class="img-fluid border rounded-3 shadow-lg mb-4"
+									alt="Homepage Projects" width="700" height="500" loading="lazy">
+							</div>
+						</div>
 					</div>
-				</div>
-				<div class="overflow-hidden" style="max-height: 30vh;">
-					<div class="container px-5">
-						<img src="/images/homepage-projects.jpg" class="img-fluid border rounded-3 shadow-lg mb-4"
-							alt="Homepage Projects" width="700" height="500" loading="lazy">
-					</div>
-				</div>
 			</div>
-	</div>
 
-	<%- include ('partials/footer') %>
+			<%- include ('partials/footer') %>
+				<script src="../scripts/confetti.min.js"></script>
+				<!-- Toast Code -->
+				<% if (isAuthenticated ){ %>
+					<script>
 
-	<!-- Toast Code -->
-	<% if (isAuthenticated ){ %>
-		<script>
-			const isFirstView = localStorage.getItem('isFirstView') || '';
-			// localStorage only stores strings
-			if (isFirstView !== "true") {
-				localStorage.setItem('isFirstView', true);
-				const myToastEl = document.getElementById('toast')
-				bootstrap.Toast.getOrCreateInstance(myToastEl).show()
-			}
-		</script>
-	<% } %>
 
-	<% if (!isAuthenticated) { %>
-		<script>
-			if (localStorage.getItem('isFirstView') === "true") {
-				localStorage.setItem('isFirstView', false);
-				const myToastEl = document.getElementById('toast')
-				bootstrap.Toast.getOrCreateInstance(myToastEl).show()
-			}
-		</script>
-	<% } %>
+						const isFirstView = localStorage.getItem('isFirstView') || '';
+						// localStorage only stores strings
+						if (isFirstView !== "true") {
+							localStorage.setItem('isFirstView', true);
+							const myToastEl = document.getElementById('toast');
+							bootstrap.Toast.getOrCreateInstance(myToastEl).show();
+							let confetti = new Confetti('demo');
+							confetti.setCount(75);
+							confetti.setSize(5);
+							confetti.setPower(75);
+							confetti.setFade(false);
+							confetti.destroyTarget(true);
+							setTimeout(() => { myToastEl.click() }, 3000);
+						}
+					</script>
+					<% } %>
 
-  </body>
+						<% if (!isAuthenticated) { %>
+							<script>
+								if (localStorage.getItem('isFirstView') === "true") {
+									localStorage.setItem('isFirstView', false);
+									const myToastEl = document.getElementById('toast');
+									bootstrap.Toast.getOrCreateInstance(myToastEl).show();
+									let confetti = new Confetti('demo');
+									confetti.setCount(75);
+									confetti.setSize(5);
+									confetti.setPower(75);
+									confetti.setFade(false);
+									confetti.destroyTarget(true);
+									setTimeout(() => { myToastEl.click() }, 3000);
+								}
+							</script>
+							<% } %>
+
+	</body>
+
 </html>
