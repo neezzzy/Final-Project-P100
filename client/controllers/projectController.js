@@ -1,9 +1,12 @@
+const User = require("../models/userModel");
 const Project = require("../models/projectModel");
 const moment = require("moment");
 module.exports = {
+
   fetchAllProjects: async function (req, res) {
     try {
-      const projects = await Project.find();
+      let projects = await Project.find().populate({path: 'projectOwnerID'});
+
       let user = req.oidc.user;
       res.render("projects", {
         title: "Projects",
@@ -20,6 +23,7 @@ module.exports = {
   },
 
   saveProject: async function (req, res) {
+
     const projectDetails = new Project({
       name: req.body.projectName,
       description: req.body.projectDescription,
@@ -27,6 +31,7 @@ module.exports = {
       image: req.oidc.user.picture,
       startDate: moment(req.body.projectStartDate).format("YYYY-MM-DD"),
       endDate: moment(req.body.projectEndDate).format("YYYY-MM-DD"),
+      projectOwnerID: req.body.projectOwnerID,
     });
 
     projectDetails.save(function (err) {
@@ -46,9 +51,28 @@ module.exports = {
         isAuthenticated: req.isAuthenticated,
       });
     } catch (error) {
-      console.log(errorr);
+      console.log(error);
     }
   },
+
+
+  addProject: async function (req, res) {
+    let userAuth0 = req.oidc.user;
+
+    try {
+      const user = await User.findOne({ email: userAuth0.email });
+      res.render("projects-add", {
+        title: "Project Add",
+        isAuthenticated: req.isAuthenticated,
+        user
+      });
+
+    } catch (error) {
+      console.log(error);
+    }
+  },
+
+
 
   deleteProject: async function (req, res) {
     try {

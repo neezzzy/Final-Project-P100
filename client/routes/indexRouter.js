@@ -27,13 +27,7 @@ router.get("/projects-signup", requiresAuth(), async (req, res) => {
 
 router.get("/project-edit/:id", projectController.getProjectByID);
 router.get("/project-delete/:id", projectController.deleteProject);
-
-router.get("/projects-add", requiresAuth(), async function (req, res) {
-  res.render("projects-add", {
-    title: "Project Add",
-    isAuthenticated: req.isAuthenticated,
-  });
-});
+router.get("/projects-add", requiresAuth(), projectController.addProject);
 
 router.post("/projects-add", projectController.saveProject);
 router.post("/project-edit/:id", projectController.editProject);
