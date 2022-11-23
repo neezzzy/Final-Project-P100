@@ -4,20 +4,32 @@ const moment = require("moment");
 module.exports = {
 
   fetchAllProjects: async function (req, res) {
+
+    let isStudent;
+    let isCompany;
+
     try {
       let projects = await Project.find().populate({path: 'projectOwnerID'});
+      let userAuth0 = req.oidc.user;
+      
+      if (req.isAuthenticated) {
+        const user = await User.findOne({ email: userAuth0.email });
+        if (user.userType === "Student") {isStudent = true;}
+        if (user.userType === "Company") {isCompany = true;}
+      }
 
-      let user = req.oidc.user;
       res.render("projects", {
         title: "Projects",
         isAuthenticated: req.isAuthenticated,
         projects,
-        isStudent: user.role.includes("Student"),
+        isStudent,
+        isCompany,
       });
+
     } catch (err) {
       res.status(404).json({
         status: "fail",
-        message: err,
+        message: err.message,
       });
     }
   },
