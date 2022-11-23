@@ -25,10 +25,10 @@ const projectSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    projectOwnerID: [{
+    projectOwnerID: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User"
-    }]
+    }
     // createdBy: {
     //   type: String,
     //   required: true,

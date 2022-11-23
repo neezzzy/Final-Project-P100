@@ -4,6 +4,7 @@
 
   <body class="container">
     <%- include ('partials/nav') %>
+
       <% projects.forEach(project=> { %>
         <div class="card mb-3">
           <div class='row g-0'>
@@ -19,9 +20,7 @@
                 <!-- Project Details -->
                 <p class="card-text"><span class="fw-bold">Project ID: </span><%= project.id %></p>
                 <p class="card-text"><span class="fw-bold">Company: </span>                  
-                  <% project.projectOwnerID.forEach(ID => { %>
-                    <%= ID.name %>
-                  <% }) %>
+                    <%= project.projectOwnerID.name %>
                 </p>
                 <p class="card-text"><span class="fw-bold">Description: </span><%= project.description %></p>
                 <p class="card-text"><span class="fw-bold">Location: </span><%= project.location %></p>
