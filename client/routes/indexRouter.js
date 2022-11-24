@@ -32,6 +32,8 @@ router.get("/projects-add", requiresAuth(), projectController.addProject);
 router.post("/projects-add", projectController.saveProject);
 router.post("/project-edit/:id", projectController.editProject);
 
+router.get("/profile-add", userController.addProfile);
+
 router.get("/profile-edit/:id", userController.getProfileByID);
 router.post("/profile-edit/:id", userController.editProfile);
 

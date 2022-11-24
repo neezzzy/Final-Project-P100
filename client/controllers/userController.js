@@ -38,7 +38,28 @@ module.exports = {
       console.log(error);
     }
   },
+  
+  addProfile: async function (req, res){
+    try {
+      let userAuth0 = req.oidc.user;
+      const userEmail = userAuth0.email;
 
+      const newUser = new User({
+        name: "test",
+        email: userEmail
+      });
+     await newUser.save(function(err,room){
+        const newUserId = room._id;
+        res.redirect(`/profile-edit/${newUserId}`);
+        });
+      
+    
+    } catch (error) {
+
+      console.log(error.message)
+    }
+  },
+  
   editProfile: async function (req, res) {
     try {
       await User.findByIdAndUpdate(req.params.id, {
@@ -54,3 +75,5 @@ module.exports = {
     }
   },
 };
+
+
