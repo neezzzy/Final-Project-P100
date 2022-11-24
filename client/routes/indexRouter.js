@@ -42,4 +42,19 @@ router.get("/forbidden", (req, res) => {
   });
 });
 
+router.get("/register", async function (req, res) {
+  let isAuthenticated = req.isAuthenticated;
+
+  res.oidc.login({
+    returnTo: "/sign-up",
+    authorizationParams: { screen_hint: "signup" },
+  });
+});
+
+router.get("/sign-up", async function (req, res) {
+  let isAuthenticated = req.isAuthenticated;
+
+  res.render("sign-up", { title: "Sign-up", isAuthenticated });
+});
+
 module.exports = router;
