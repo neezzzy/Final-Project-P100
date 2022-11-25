@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include ('../partials/header') %>
+	<body>
+			<div class="container">
+
+				<%- include ('nav') %>
+                <a href="/admin/create-project/company" class="btn btn-success">Create Project with Last Created Company</a>
+                <a href="/admin/create-project/random" class="btn btn-secondary" title="Sometimes doesn't work, just click again ... and again">Create Project with Random Company</a>
+                <!-- TODO Add Confirmation -->
+				<a href="/admin/delete-all-projects/" class="btn btn-danger">Delete All Projects</a>
+				
+				<table class="table table-striped">	
+					<thead>
+							<tr>
+								<th scope="col">Name</th>
+								<th scope="col">Company</th>
+								<th scope="col">Location</th>
+								<th scope="col">Start</th>
+								<th scope="col">End</th>
+								<!-- TODO Add Confirmation -->
+								<th scope="col"><a href="/admin/delete-all-projects/" class="text-decoration-none">❌</a></th>
+							</tr>
+						</thead>
+						<tbody>
+							<% projects.forEach(project => { %>
+								<tr>
+									<td><%= project.name %></td>
+									<td><%= project.projectOwnerID.name %></td>
+									<td><%= project.location %></td>
+									<td><%= project.startDate %></td>
+									<td><%= project.endDate %></td>
+									<td><a href="/admin/delete-project/<%= project._id %>" class="btn btn-danger">X</a></td>
+								</tr>
+							<% }) %>
+					</tbody>
+				</table>
+            </div>
+			<%- include ('../partials/footer') %>
+	</body>
+</html>
