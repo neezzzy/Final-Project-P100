@@ -1,4 +1,4 @@
-# AWSC208.Assignment1
+# AWSC208.Final.Project.Report
 ![CampusConnect-HomeScreen](https://user-images.githubusercontent.com/3792666/200188379-d22337db-50d9-4a45-bd2e-32549387b853.png)
 
 Our assignment is a Node.js, Express, and EJS project for Web Development: Advanced Web Scripting Concepts called Campus Connect.
@@ -9,41 +9,39 @@ Hiring a new employee can be time consuming and costly for companies. Campus Con
 
 # Screenshots
 
+![API](https://user-images.githubusercontent.com/3792666/202606687-438ed8c3-2d22-4839-b561-57214f6225ad.png)
+
 ![Dashboard](https://user-images.githubusercontent.com/3792666/200189545-6a04b151-1382-4848-8cc8-8104ca7f3f2b.png)
 
-![Projects-Desktop](https://user-images.githubusercontent.com/3792666/200189543-f4809d46-2edc-4b7d-8ecb-55d710beef4d.png)
+![Projects-Desktop](https://user-images.githubusercontent.com/3792666/203893985-6741e3ac-f10f-4b0d-b300-82bc3ef15a3f.png)
+
+![Sign Up Flow](https://user-images.githubusercontent.com/3792666/203894056-d0e8bc31-5410-4f06-b786-db3fb1db1f75.png)
+
+![Log Out Toast](https://user-images.githubusercontent.com/3792666/203894089-d9f81621-bba6-4ef5-994e-e9a8197747db.png)
 
 ![Dashboard-Mobile](https://user-images.githubusercontent.com/3792666/200189546-d0c9fc74-68aa-4e66-9b3b-9b4bb28255f9.png)
 ![Home-Mobile](https://user-images.githubusercontent.com/3792666/200189547-ff637324-3909-4fa6-84dc-b9902262806a.png)
+![Projects-Student-Mobile](https://user-images.githubusercontent.com/3792666/203894167-d6ee1d38-ae4a-4587-9252-7b825d8cacb6.png)
+
 
 
 # Video Walkthrough
-[![CampusConnect-Assignment1-VideoWalkThru](https://user-images.githubusercontent.com/3792666/200188384-05a6ac98-a41e-44bb-88a8-cec249ccfbed.png)](https://www.youtube.com/watch?v=aS8dmHsOQKw&ab_channel=YottaPrep)
+[![CampusConnect-Assignment1-VideoWalkThru](https://user-images.githubusercontent.com/3792666/200188384-05a6ac98-a41e-44bb-88a8-cec249ccfbed.png)](https://youtu.be/aV5Ezmz7f5A)
 
 # Assignment Requirements
+Instructions
+You have delivered the three deliverables so far, and in this report you will be documenting/merging all of your work into a report. 
 
-> We have learned Authentication, Authorization, Secured API, and Role based authentication in class with EJS, Node, Express, and Auth0. In this assignment, we will be practicing all the topics we have covered in the class with React.
+- Functional requirements
+- Non Functional requirements
+- WBS
+- Task Tickets
+- Time spent on each task
+- Update your readme final with any of the work you have done after deliverable three. 
 
-> The application should have all the functionalities, but you must have your own input as well. For instance, after logging, there should be an appropriate page presented to a user.
+PS: This report can be your draft report of your final project. 
 
-- Requirements
-	- Authentication (Login / Logout)
-		- message to user via pop / ajax
-			- "You are logged in" / "You are logged out"
-	- Protected Route
-		- fetch data from secured server
-	- Authorization (Role Based)
-            - Company
-            - Student
-		- redirect after login based on role
-		- 404 or error display if not authorized if not auth
-	- Submission
-		- Video
-		- Git Repo
-		- README.md with install instructions
-		- screenshots
-
-### Environment Variables
+## Environment Variables
 
 To run this project, you will need to add the following environment variables to your `.env` files
 
