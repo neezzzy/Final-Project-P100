@@ -9,6 +9,7 @@ router.get("/", function (req, res) {
 });
 
 router.get("/projects", projectController.fetchAllProjects);
+
 router.get("/profile", requiresAuth(), userController.fetchUserProfile);
 
 router.get("/dashboard", requiresAuth(), async function (req, res) {
@@ -18,12 +19,7 @@ router.get("/dashboard", requiresAuth(), async function (req, res) {
   });
 });
 
-router.get("/projects-signup", requiresAuth(), async (req, res) => {
-  res.render("projects-signup", {
-    title: "Projects Signup",
-    isAuthenticated: req.isAuthenticated,
-  });
-});
+router.get("/project-signup/:id", requiresAuth(), projectController.signupToProject)
 
 router.get("/project-edit/:id", projectController.getProjectByID);
 router.get("/project-delete/:id", projectController.deleteProject);
