@@ -44,7 +44,7 @@ module.exports = {
       const userEmail = userAuth0.email;
 
       const newUser = new User({
-        name: "test",
+        name: req.oidc.user.name,
         email: userEmail,
         userType: userType
       });
