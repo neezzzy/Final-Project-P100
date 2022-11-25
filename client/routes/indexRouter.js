@@ -32,6 +32,8 @@ router.get("/projects-add", requiresAuth(), projectController.addProject);
 router.post("/projects-add", projectController.saveProject);
 router.post("/project-edit/:id", projectController.editProject);
 
+router.get("/profile-add", userController.addProfile);
+
 router.get("/profile-edit/:id", userController.getProfileByID);
 router.post("/profile-edit/:id", userController.editProfile);
 
@@ -40,6 +42,21 @@ router.get("/forbidden", (req, res) => {
     title: "403 UNAUTHORIZED",
     isAuthenticated: req.isAuthenticated,
   });
+});
+
+router.get("/register", async function (req, res) {
+  let isAuthenticated = req.isAuthenticated;
+
+  res.oidc.login({
+    returnTo: "/sign-up",
+    authorizationParams: { screen_hint: "signup" },
+  });
+});
+
+router.get("/sign-up", async function (req, res) {
+  let isAuthenticated = req.isAuthenticated;
+
+  res.render("sign-up", { title: "Sign-up", isAuthenticated });
 });
 
 module.exports = router;

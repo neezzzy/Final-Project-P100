@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include ('partials/header') %>
+
+    <body>
+        <div class="container">
+            <%- include ('partials/nav') %>
+                <h1>We're happy to have you here!</h1>
+
+                <p>First Let's Create your account. Please choose the option that best describes you.</p>
+
+
+                <div class="row gap-4">
+                    <div class="col-12 col-md dashboard-button-wrapper rounded-4 shadow-lg overflow-hidden nopadding">
+                        <img class="card-img-bg" src="images/company.jpg" />
+                        <div
+                            class="d-flex flex-column justify-content-center align-items-center text-white text-shadow-1 overlay">
+                            <h3 class="title pt-5 mb-4 display-6 lh-1 fw-bold">I am a Company</h3>
+                            <p>Hiring Managers, Employers</p>
+                            <button class="btn btn-danger btn-lg">
+                                <a href="/profile-add" class="nav-link stretched-link">Sign Up</a>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md dashboard-button-wrapper rounded-4 shadow-lg overflow-hidden nopadding">
+                        <img class="card-img-bg" src="images/student.jpg" />
+                        <div
+                            class="d-flex flex-column justify-content-center align-items-center text-white text-shadow-1 overlay ">
+                            <h3 class="title pt-5 mb-4 display-6 lh-1 fw-bold">I am a Student</h3>
+                            <p>University Student, xyz..</p>
+
+                            <button class="btn btn-danger btn-lg">
+                                <a href="/profile-add" class="nav-link stretched-link">Sign Up</a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+        </div>
+        <%- include ('partials/footer') %>
+    </body>
+
+</html>
