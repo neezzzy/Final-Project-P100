@@ -11,7 +11,8 @@ router.get("/create-user/:userType", adminController.createUser)
 router.get("/delete-user/:id", adminController.deleteUser)
 router.get("/delete-all-users/", adminController.deleteAllUsers)
 
-router.get("/create-project/", adminController.createProject)
+router.get("/create-project/company", adminController.createProjectWithCompany)
+router.get("/create-project/random", adminController.createProjectWithRandomUser)
 router.get("/delete-all-projects/", adminController.deleteAllProjects)
 router.get("/delete-project/:id", adminController.deleteUProject)
 

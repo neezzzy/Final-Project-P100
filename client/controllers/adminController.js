@@ -95,7 +95,32 @@ module.exports = {
         console.log("Successful deletion");
         res.redirect("/admin/users");
     },
-    createProject: async function (req, res) {
+    createProjectWithCompany: async function (req, res) {
+        try {
+            await User.findOne().exec(function (err, result) {
+                const projectDetails = new Project({
+                    name: faker.faker.company.bsAdjective(),
+                    description: faker.faker.company.catchPhrase(),
+                    location: faker.faker.address.cityName(),
+                    image: faker.faker.image.abstract(),
+                    startDate: moment(faker.faker.date.soon(5)).format("YYYY-MM-DD"),
+                    endDate: moment(faker.faker.date.future()).format("YYYY-MM-DD"),
+                    projectOwnerID: result,
+                });
+
+                projectDetails.save(function (err) {
+                    if (err) throw err;
+                    res.redirect("/admin/projects");
+                });
+            });
+        } catch (err) {
+            res.status(404).json({
+                status: "fail",
+                message: err.message,
+            });
+        }
+    },
+    createProjectWithRandomUser: async function (req, res) {
         try {
             await User.count().exec(function (err, count) {
                 const random = Math.floor(Math.random() * count);
