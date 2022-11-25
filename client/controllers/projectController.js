@@ -9,7 +9,7 @@ module.exports = {
     let isCompany;
 
     try {
-      let projects = await Project.find().populate({path: 'projectOwnerID'});
+      let projects = await Project.find().populate({path: 'projectOwnerID'}).populate({path: 'studentIDs'});
       let userAuth0 = req.oidc.user;
       
       if (req.isAuthenticated) {
@@ -50,6 +50,20 @@ module.exports = {
       if (err) throw err;
       res.redirect("/projects");
     });
+  },
+
+  signupToProject: async function (req, res) {
+    let userAuth0 = req.oidc.user;
+    const student = await User.findOne({ email: userAuth0.email });
+    let projectID = req.params.id
+    let project = await Project.findById(projectID)
+    try {
+      project.studentIDs.push(student._id)
+      await project.save();
+      res.redirect("/projects")
+    } catch (error) {
+      console.log(error.message);
+    }
   },
 
   getProjectByID: async function (req, res) {

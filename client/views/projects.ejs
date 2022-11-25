@@ -3,6 +3,7 @@
 <%- include ('partials/header') %>
 
   <body class="container">
+
     <%- include ('partials/nav') %>
 
       <% projects.forEach(project=> { %>
@@ -21,6 +22,11 @@
                 <p class="card-text"><span class="fw-bold">Company: </span>                  
                     <%= project.projectOwnerID.name %>
                 </p>
+                <p class="card-text"><span class="fw-bold">Student(s): </span>
+                  <% project.studentIDs.forEach(student=> { %>    
+                      <p><%= student.name %></p>
+                  <% }) %>
+              </p>
                 <p class="card-text"><span class="fw-bold">Description: </span><%= project.description %></p>
                 <p class="card-text"><span class="fw-bold">Location: </span><%= project.location %></p>
                 <p class="card-text"><span class="fw-bold">Start Date:</span> <%= project.startDate %></p>
