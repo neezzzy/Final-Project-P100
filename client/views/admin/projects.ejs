@@ -6,8 +6,9 @@
 
 				<%- include ('nav') %>
                 <a href="/admin/create-project/company" class="btn btn-success">Create Project with Last Created Company</a>
-                <a href="/admin/create-project/random" class="btn btn-secondary">Create Project with Random User</a>
-                <a href="/admin/delete-all-projects/" class="btn btn-danger">Delete All Projects</a>
+                <a href="/admin/create-project/random" class="btn btn-secondary" title="Sometimes doesn't work, just click again ... and again">Create Project with Random Company</a>
+                <!-- TODO Add Confirmation -->
+				<a href="/admin/delete-all-projects/" class="btn btn-danger">Delete All Projects</a>
 				
 				<table class="table table-striped">	
 					<thead>
@@ -17,7 +18,8 @@
 								<th scope="col">Location</th>
 								<th scope="col">Start</th>
 								<th scope="col">End</th>
-								<th scope="col">❌</th>
+								<!-- TODO Add Confirmation -->
+								<th scope="col"><a href="/admin/delete-all-projects/" class="text-decoration-none">❌</a></th>
 							</tr>
 						</thead>
 						<tbody>

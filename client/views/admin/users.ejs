@@ -6,6 +6,7 @@
 				<%- include ('nav') %>
                 <a href="/admin/create-user/student" class="btn btn-success">Create Student</a>
                 <a href="/admin/create-user/company" class="btn btn-success">Create Company</a>
+				<!-- TODO Add Confirmation -->
                 <a href="/admin/delete-all-users/" class="btn btn-danger">Delete All Users</a>
 				
 				<table class="table table-striped">	
@@ -17,7 +18,8 @@
 								<th scope="col">email</th>
 								<th scope="col">Country</th>
 								<th scope="col">Image</th>
-								<th scope="col">❌</th>
+								<!-- TODO Add Confirmation -->
+								<th scope="col"><a href="/admin/delete-all-users/" class="text-decoration-none">❌</a></th>
 							</tr>
 						</thead>
 						<tbody>

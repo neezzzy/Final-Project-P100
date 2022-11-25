@@ -6,10 +6,8 @@ module.exports = {
     
     getAdmin: async function (req, res) {
         try {
-            let users = await User.find()
             res.render("admin", { 
                 title: "Admin",
-                users
              });
         } catch (error) {
             res.status(404).json({
@@ -82,7 +80,7 @@ module.exports = {
         } catch (err) {
             console.log(error.message)
         }
-        console.log("Successful deletion");
+        console.log("Successful deletion"); // Replace with Flash
         res.redirect("/admin/users");
       },
 
@@ -92,12 +90,15 @@ module.exports = {
         } catch (err) {
             console.log(error.message)
         }
-        console.log("Successful deletion");
+        console.log("Successful deletion"); // Replace with Flash
         res.redirect("/admin/users");
     },
     createProjectWithCompany: async function (req, res) {
+
+        // Warning sus code below
+
         try {
-            await User.findOne().exec(function (err, result) {
+            await User.findOne({ userType: "company" }).exec(function (err, foundCompany) {
                 const projectDetails = new Project({
                     name: faker.faker.company.bsAdjective(),
                     description: faker.faker.company.catchPhrase(),
@@ -105,14 +106,20 @@ module.exports = {
                     image: faker.faker.image.abstract(),
                     startDate: moment(faker.faker.date.soon(5)).format("YYYY-MM-DD"),
                     endDate: moment(faker.faker.date.future()).format("YYYY-MM-DD"),
-                    projectOwnerID: result,
+                    projectOwnerID: foundCompany,
                 });
 
-                projectDetails.save(function (err) {
-                    if (err) throw err;
+                if (!foundCompany) {
+                    console.log("No Company"); // Replace with Flash
                     res.redirect("/admin/projects");
-                });
+                } else {
+                    projectDetails.save(function (err) {
+                        if (err) throw err;
+                        res.redirect("/admin/projects");
+                    });
+                }
             });
+
         } catch (err) {
             res.status(404).json({
                 status: "fail",
@@ -124,9 +131,15 @@ module.exports = {
         try {
             await User.count().exec(function (err, count) {
                 const random = Math.floor(Math.random() * count);
-                User.findOne().skip(random).exec(
+
+                // Warning sus code below
+                
+                // Sometimes just misfires to student
+                // might need to use aggregation or something, dunno
+
+                User.findOne({userType:"company"}).skip(random).exec(
                     
-                    function (err, result) {
+                    function (err, foundCompany) {
                         const projectDetails = new Project({
                             name: faker.faker.company.bsAdjective(),
                             description: faker.faker.company.catchPhrase(),
@@ -134,13 +147,17 @@ module.exports = {
                             image: faker.faker.image.abstract(),
                             startDate: moment(faker.faker.date.soon(5)).format("YYYY-MM-DD"),
                             endDate: moment(faker.faker.date.future()).format("YYYY-MM-DD"),
-                            projectOwnerID: result,
+                            projectOwnerID: foundCompany,
                         });
-            
-                        projectDetails.save(function (err) {
-                            if (err) throw err;
+                        if (!foundCompany) {
+                            console.log("Not Company, try again"); // Replace with Flash
                             res.redirect("/admin/projects");
-                        });
+                        } else {
+                            projectDetails.save(function (err) {
+                                if (err) throw err;
+                                res.redirect("/admin/projects");
+                            });
+                        }
                     });
             });
         } catch (err) {
