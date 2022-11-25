@@ -98,7 +98,7 @@ module.exports = {
         // Warning sus code below
 
         try {
-            await User.findOne({ userType: "company" }).exec(function (err, foundCompany) {
+            await User.findOne({ userType: "company" }).sort({createdAt: -1}).exec(function (err, foundCompany) {
                 const projectDetails = new Project({
                     name: faker.faker.company.bsAdjective(),
                     description: faker.faker.company.catchPhrase(),
