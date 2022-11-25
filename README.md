@@ -13,10 +13,16 @@ Hiring a new employee can be time consuming and costly for companies. Campus Con
 
 ![Dashboard](https://user-images.githubusercontent.com/3792666/200189545-6a04b151-1382-4848-8cc8-8104ca7f3f2b.png)
 
-![Projects-Desktop](https://user-images.githubusercontent.com/3792666/200189543-f4809d46-2edc-4b7d-8ecb-55d710beef4d.png)
+![Projects-Desktop](https://user-images.githubusercontent.com/3792666/203893985-6741e3ac-f10f-4b0d-b300-82bc3ef15a3f.png)
+
+![Sign Up Flow](https://user-images.githubusercontent.com/3792666/203894056-d0e8bc31-5410-4f06-b786-db3fb1db1f75.png)
+
+![Log Out Toast](https://user-images.githubusercontent.com/3792666/203894089-d9f81621-bba6-4ef5-994e-e9a8197747db.png)
 
 ![Dashboard-Mobile](https://user-images.githubusercontent.com/3792666/200189546-d0c9fc74-68aa-4e66-9b3b-9b4bb28255f9.png)
 ![Home-Mobile](https://user-images.githubusercontent.com/3792666/200189547-ff637324-3909-4fa6-84dc-b9902262806a.png)
+![Projects-Student-Mobile](https://user-images.githubusercontent.com/3792666/203894167-d6ee1d38-ae4a-4587-9252-7b825d8cacb6.png)
+
 
 
 # Video Walkthrough
