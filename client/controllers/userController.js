@@ -11,8 +11,6 @@ module.exports = {
       const response = await axios.get(
         `https://api.orb-intelligence.com/3/match/?api_key=${process.env.ORB_API_KEY}&name=${user.name}&country=${user.country}`
       );
-
-
       res.render("profile", {
         title: "Profile",
         isAuthenticated: req.isAuthenticated,
@@ -40,19 +38,20 @@ module.exports = {
   },
   
   addProfile: async function (req, res){
+    let userType = req.params.userType
     try {
       let userAuth0 = req.oidc.user;
       const userEmail = userAuth0.email;
 
       const newUser = new User({
         name: "test",
-        email: userEmail
+        email: userEmail,
+        userType: userType
       });
      await newUser.save(function(err,room){
         const newUserId = room._id;
         res.redirect(`/profile-edit/${newUserId}`);
         });
-      
     
     } catch (error) {
 
