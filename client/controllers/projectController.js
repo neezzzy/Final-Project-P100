@@ -67,7 +67,6 @@ module.exports = {
     }
   },
 
-
   addProject: async function (req, res) {
     let userAuth0 = req.oidc.user;
 
@@ -83,8 +82,6 @@ module.exports = {
       console.log(error);
     }
   },
-
-
 
   deleteProject: async function (req, res) {
     try {
