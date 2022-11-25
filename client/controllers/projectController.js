@@ -14,8 +14,8 @@ module.exports = {
       
       if (req.isAuthenticated) {
         const user = await User.findOne({ email: userAuth0.email });
-        if (user.userType === "Student") {isStudent = true;}
-        if (user.userType === "Company") {isCompany = true;}
+        if (user.userType === "student") {isStudent = true;}
+        if (user.userType === "company") {isCompany = true;}
       }
 
       res.render("projects", {
