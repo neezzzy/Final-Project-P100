@@ -78,7 +78,7 @@ module.exports = {
         try {
           await User.findByIdAndRemove(req.params.id);
         } catch (err) {
-            console.log(error.message)
+            console.log(err.message)
         }
         console.log("Successful deletion"); // Replace with Flash
         res.redirect("/admin/users");
@@ -88,7 +88,7 @@ module.exports = {
         try{ 
             await User.collection.drop()
         } catch (err) {
-            console.log(error.message)
+            console.log(err.message)
         }
         console.log("Successful deletion"); // Replace with Flash
         res.redirect("/admin/users");
