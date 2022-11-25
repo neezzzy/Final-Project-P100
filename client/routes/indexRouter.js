@@ -27,12 +27,12 @@ router.get("/projects-signup", requiresAuth(), async (req, res) => {
 
 router.get("/project-edit/:id", projectController.getProjectByID);
 router.get("/project-delete/:id", projectController.deleteProject);
-router.get("/projects-add", requiresAuth(), projectController.addProject);
+router.get("/projects-add/", requiresAuth(), projectController.addProject);
 
 router.post("/projects-add", projectController.saveProject);
 router.post("/project-edit/:id", projectController.editProject);
 
-router.get("/profile-add", userController.addProfile);
+router.get("/profile-add/:userType", userController.addProfile);
 
 router.get("/profile-edit/:id", userController.getProfileByID);
 router.post("/profile-edit/:id", userController.editProfile);
