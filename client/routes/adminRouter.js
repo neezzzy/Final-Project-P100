@@ -3,7 +3,7 @@ const express = require("express");
 const router = express.Router();
 const adminController = require("../controllers/adminController");
 
-router.get("/nuke/", adminController.nsuke)
+router.get("/nuke/", adminController.nuke)
 
 router.get("/", adminController.getAdmin)
 router.get("/users", adminController.getUsers)
