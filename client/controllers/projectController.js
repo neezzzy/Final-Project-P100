@@ -5,7 +5,7 @@ module.exports = {
   fetchAllProjects: async function (req, res) {
     let isStudent;
     let isCompany;
-    const { page = 1, limit = 1 } = req.query;
+    const { page = 1, limit = 3 } = req.query;
 
     try {
       let projects = await Project.find()
@@ -28,7 +28,6 @@ module.exports = {
         }
       }
       //http://localhost:3000/projects/?page=4
-      console.log(totalPages);
       res.render("projects", {
         title: "Projects",
         isAuthenticated: req.isAuthenticated,

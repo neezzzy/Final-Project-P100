@@ -41,14 +41,23 @@
                   <a class="btn btn-danger text-decoration-none" href="/project-signup/<%=project.id%>">Sign Up</a>
                 <% } %>
 
-                
-                
               </div>
             </div>
           </div>
         </div>
       <% }) %>
-      
+      <p class="card-text"><span class="fw-bold">total pages: </span><%= totalPages %></p>
+        <ul >
+          <% for (let i = 1; i<= totalPages; i++){ %>
+           <li>
+            <a href="?page=<%= i; %>">
+              <%= i; %>
+              </a>
+            
+           </li>
+            <% } %> 
+        
+        </ul>
     <%- include ('partials/footer') %>
   </body>
 </html>
