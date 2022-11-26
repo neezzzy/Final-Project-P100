@@ -12,8 +12,9 @@
 				<table class="table table-striped">	
 					<thead>
 							<tr>
-								<th scope="col">#</th>
 								<th scope="col">userType</th>
+								<th scope="col" class="text-center">Project</th>
+								<th scope="col">Projects</th>
 								<th scope="col">Name</th>
 								<th scope="col">email</th>
 								<th scope="col">Country</th>
@@ -24,19 +25,73 @@
 						</thead>
 						<tbody>
 							<% users.forEach(user => { %>
-								<tr>
-									<td><%= user._id %></td>
-									<td><%= user.userType %></td>
-									<td><%= user.name %></td>
-									<td><%= user.email %></td>
-									<td><%= user.country %></td>
-									<td><img src="<%= user.image %>" width="100" title="<%= user.image %>" alt="<%= user.image %>"></td>
-									<td><a href="/admin/delete-user/<%= user._id %>" class="btn btn-danger">X</a></td>
+								<tr id="s<%= user._id %>" 
+									data-userType="<%= user.userType %>"
+									data-name="<%= user.name %>"
+									data-email="<%= user.email %>"
+									data-country="<%= user.country %>"
+									data-image="<%= user.image %>"
+									 >
+								<td class="align-middle"><%= user.userType %></td>
+								<td class="text-center align-middle">
+
+									<% if (user.userType === "student") { %>
+										<a class="modal-pop btn btn-success" id="<%= user.name %>" 
+											href="/admin/projects-modal/"  
+											data-bs-toggle="modal" data-bs-target="#exampleModal" data-studentid="<%= user._id %>">Signup</a></td>
+									<% } else { %>
+										<a class="modal-pop btn btn-success disabled" id="<%= user.name %>" href="/admin/projects-modal/"  data-bs-toggle="modal" data-bs-target="#exampleModal" data-studentid="<%= user._id %>">Create</a></td>
+									<% } %>					
+
+								<td class="align-middle">
+									
+									<!-- student -->
+									<% projects.forEach(project=> { %>    
+										<% project.studentIDs.forEach(student=> { %>    
+											<%  if (JSON.stringify(student._id) === JSON.stringify(user._id)) { %>
+												<%= project.name %> 
+											<% } %>
+										<% }) %>
+									<% }) %>
+
+									<!-- company -->
+									<% projects.forEach(project=> { %>    
+											<%  if (JSON.stringify(project.projectOwnerID._id) === JSON.stringify(user._id)) { %>
+												<%= project.name %> 
+											<% } %>
+									<% }) %>
+
+
+								<td class="align-middle"><%= user.name %></td>
+								<td class="align-middle"><%= user.email %></td>
+								<td class="align-middle"><%= user.country %></td>
+								<td class="align-middle"><img src="<%= user.image %>" width="100" title="<%= user.image %>" alt="<%= user.image %>"></td>
+								<td class="align-middle"><a href="/admin/delete-user/<%= user._id %>" class="btn btn-danger">X</a></td>
 								</tr>
+
 							<% }) %>
 					</tbody>
 				</table>
             </div>
+
+			<script>
+				$(document).ready(function() {
+					$(".modal-pop").on('click' , function () {
+						let activeStudentID = $(this).data('studentid')
+						let activeStudentName = document.querySelector(`#s${activeStudentID}`).getAttribute('data-name')
+						document.getElementById("modaltitle").textContent=`Signup ${activeStudentName} to a Project`
+
+						$('.project-link').each(function(){
+
+							// TODO change to base href maybe
+     						this.href += `/${activeStudentID}`;
+						});
+					});
+				});
+			</script>
+
+  			<%- include ('projects-modal') %>
 			<%- include ('../partials/footer') %>
+
 	</body>
 </html>

@@ -19,9 +19,11 @@ module.exports = {
     getUsers: async function (req, res) {
         try {
             let users = await User.find()
+            let projects = await Project.find().populate({path: 'projectOwnerID'}).populate({path: 'studentIDs'});
             res.render("admin/users", { 
                 title: "Users",
-                users
+                users,
+                projects,
              });
         } catch (error) {
             res.status(404).json({
@@ -178,7 +180,7 @@ module.exports = {
         res.redirect("/admin/projects");
     },
 
-    deleteUProject: async function (req, res) {
+    deleteProject: async function (req, res) {
         try {
           await Project.findByIdAndRemove(req.params.id);
         } catch (err) {
@@ -187,4 +189,19 @@ module.exports = {
         console.log("Successful deletion");
         res.redirect("/admin/projects");
       },
+
+    signupStudentToProject: async function (req, res) {
+        let projectID = req.params.projectid
+        let studentID = req.params.studentid
+
+        let project = await Project.findById(projectID)
+        try {
+          project.studentIDs.push(studentID)
+          await project.save();
+          res.redirect("/admin/users")
+        } catch (error) {
+          console.log(error.message);
+        }
+      },
+
 }

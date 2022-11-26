@@ -14,6 +14,7 @@ router.get("/delete-all-users/", adminController.deleteAllUsers)
 router.get("/create-project/company", adminController.createProjectWithCompany)
 router.get("/create-project/random", adminController.createProjectWithRandomUser)
 router.get("/delete-all-projects/", adminController.deleteAllProjects)
-router.get("/delete-project/:id", adminController.deleteUProject)
+router.get("/delete-project/:id", adminController.deleteProject)
+router.get("/student-signup/:projectid/:studentid", adminController.signupStudentToProject)
 
 module.exports = router;
