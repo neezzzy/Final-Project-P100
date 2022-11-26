@@ -8,7 +8,7 @@ router.get("/", function (req, res) {
   res.render("index", { title: "Home", isAuthenticated: req.isAuthenticated });
 });
 
-router.get("/projects", projectController.fetchAllProjects);
+router.get("/projects", projectController.fetchAllProjects)
 
 router.get("/profile", requiresAuth(), userController.fetchUserProfile);
 
@@ -19,7 +19,11 @@ router.get("/dashboard", requiresAuth(), async function (req, res) {
   });
 });
 
-router.get("/project-signup/:id", requiresAuth(), projectController.signupToProject)
+router.get(
+  "/project-signup/:id",
+  requiresAuth(),
+  projectController.signupToProject
+);
 
 router.get("/project-edit/:id", projectController.getProjectByID);
 router.get("/project-delete/:id", projectController.deleteProject);
