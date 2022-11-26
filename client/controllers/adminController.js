@@ -4,6 +4,16 @@ const faker = require('@faker-js/faker');
 const moment = require("moment");
 module.exports = {
     
+    nuke: async function (req, res) {
+        try{ 
+            await User.collection.drop()
+            await Project.collection.drop()
+        } catch (err) {
+            console.log(err.message)
+        }
+        console.log("Successful deletion"); // Replace with Flash
+        res.redirect("/admin");
+    },
     getAdmin: async function (req, res) {
         try {
             res.render("admin", { 
@@ -98,7 +108,6 @@ module.exports = {
     createProjectWithCompany: async function (req, res) {
 
         // Warning sus code below
-
         try {
             await User.findOne({ userType: "company" }).sort({createdAt: -1}).exec(function (err, foundCompany) {
                 const projectDetails = new Project({
@@ -110,7 +119,6 @@ module.exports = {
                     endDate: moment(faker.faker.date.future()).format("YYYY-MM-DD"),
                     projectOwnerID: foundCompany,
                 });
-
                 if (!foundCompany) {
                     console.log("No Company"); // Replace with Flash
                     res.redirect("/admin/projects");
@@ -122,6 +130,33 @@ module.exports = {
                 }
             });
 
+        } catch (err) {
+            res.status(404).json({
+                status: "fail",
+                message: err.message,
+            });
+        }
+    },
+    createProjectWithSpecificCompany: async function (req, res) {
+
+        // Should combine with code above
+
+        let companyID = req.params.id
+
+        try {
+            const projectDetails = new Project({
+                name: faker.faker.company.bsAdjective(),
+                description: faker.faker.company.catchPhrase(),
+                location: faker.faker.address.cityName(),
+                image: faker.faker.image.abstract(),
+                startDate: moment(faker.faker.date.soon(5)).format("YYYY-MM-DD"),
+                endDate: moment(faker.faker.date.future()).format("YYYY-MM-DD"),
+                projectOwnerID: companyID,
+            });
+            projectDetails.save(function (err) {
+                if (err) throw err;
+                res.redirect("/admin/users");
+            });
         } catch (err) {
             res.status(404).json({
                 status: "fail",

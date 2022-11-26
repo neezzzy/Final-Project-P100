@@ -40,7 +40,7 @@
 											href="/admin/projects-modal/"  
 											data-bs-toggle="modal" data-bs-target="#exampleModal" data-studentid="<%= user._id %>">Signup</a></td>
 									<% } else { %>
-										<a class="modal-pop btn btn-success disabled" id="<%= user.name %>" href="/admin/projects-modal/"  data-bs-toggle="modal" data-bs-target="#exampleModal" data-studentid="<%= user._id %>">Create</a></td>
+										<a class="btn btn-success" href="/admin/create-project/company/<%= user._id %>">Create</a></td>
 									<% } %>					
 
 								<td class="align-middle">
