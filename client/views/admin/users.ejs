@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include ('../partials/header') %>
-	<body>
+	<body class="admin-bg">
 			<div class="container">
 				<%- include ('nav') %>
                 <a href="/admin/create-user/student" class="btn btn-success">Create Student</a>
                 <a href="/admin/create-user/company" class="btn btn-success">Create Company</a>
 				<!-- TODO Add Confirmation -->
-                <a href="/admin/delete-all-users/" class="btn btn-danger">Delete All Users</a>
+                <a href="/admin/delete-all-users/users" class="btn btn-danger">Delete All Users</a>
+                <a href="/admin/delete-all-projects/users" class="btn btn-danger">Delete All Projects</a>
 				
 				<table class="table table-striped">	
 					<thead>
@@ -82,16 +83,15 @@
 						document.getElementById("modaltitle").textContent=`Signup ${activeStudentName} to a Project`
 
 						$('.project-link').each(function(){
-
 							// TODO change to base href maybe
-     						this.href += `/${activeStudentID}`;
+     						// parse string html regex
+							// find first "/" from right
+							this.href += `/${activeStudentID}`;
 						});
 					});
 				});
 			</script>
-
   			<%- include ('projects-modal') %>
 			<%- include ('../partials/footer') %>
-
 	</body>
 </html>

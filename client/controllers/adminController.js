@@ -5,9 +5,10 @@ const moment = require("moment");
 module.exports = {
     
     nuke: async function (req, res) {
-        try{ 
-            await User.collection.drop()
-            await Project.collection.drop()
+        try {
+            const dropUser = User.collection.drop()
+            const dropProject = Project.collection.drop()
+            await Promise.all([dropUser, dropProject])
         } catch (err) {
             console.log(err.message)
         }
@@ -97,13 +98,16 @@ module.exports = {
       },
 
     deleteAllUsers: async function (req, res) {
+        let redirect = ""
+        if (req.params.redirect){redirect = req.params.redirect}
+
         try{ 
             await User.collection.drop()
         } catch (err) {
             console.log(err.message)
         }
         console.log("Successful deletion"); // Replace with Flash
-        res.redirect("/admin/users");
+        res.redirect(`/admin/${redirect}`);
     },
     createProjectWithCompany: async function (req, res) {
 
@@ -206,20 +210,23 @@ module.exports = {
     },
 
     deleteAllProjects: async function (req, res) {
+        let redirect = ""
+        if (req.params.redirect){redirect = req.params.redirect}
+
         try{ 
             await Project.collection.drop()
         } catch (err) {
-            console.log(error.message)
+            console.log(err.message)
         }
-        console.log("Successful deletion");
-        res.redirect("/admin/projects");
+        console.log("Successful deletion"); // Replace with Flash
+        res.redirect(`/admin/${redirect}`);
     },
 
     deleteProject: async function (req, res) {
         try {
           await Project.findByIdAndRemove(req.params.id);
         } catch (err) {
-            console.log(error.message)
+            console.log(err.message)
         }
         console.log("Successful deletion");
         res.redirect("/admin/projects");

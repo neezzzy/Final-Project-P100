@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include ('../partials/header') %>
-	<body>
+	<body class="admin-bg">
 			<div class="container">
 
 				<%- include ('nav') %>
                 <a href="/admin/create-project/company" class="btn btn-success">Create Project with Last Created Company</a>
                 <a href="/admin/create-project/random" class="btn btn-secondary" title="Sometimes doesn't work, just click again ... and again">Create Project with Random Company</a>
                 <!-- TODO Add Confirmation -->
-				<a href="/admin/delete-all-projects/" class="btn btn-danger">Delete All Projects</a>
+				<a href="/admin/delete-all-projects/projects" class="btn btn-danger">Delete All Projects</a>
 				
 				<table class="table table-striped">	
 					<thead>
