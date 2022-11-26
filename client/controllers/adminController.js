@@ -4,6 +4,17 @@ const faker = require('@faker-js/faker');
 const moment = require("moment");
 module.exports = {
     
+    nuke: async function (req, res) {
+        try {
+            const dropUser = User.collection.drop()
+            const dropProject = Project.collection.drop()
+            await Promise.all([dropUser, dropProject])
+        } catch (err) {
+            console.log(err.message)
+        }
+        console.log("Successful deletion"); // Replace with Flash
+        res.redirect("/admin");
+    },
     getAdmin: async function (req, res) {
         try {
             res.render("admin", { 
@@ -19,9 +30,11 @@ module.exports = {
     getUsers: async function (req, res) {
         try {
             let users = await User.find()
+            let projects = await Project.find().populate({path: 'projectOwnerID'}).populate({path: 'studentIDs'});
             res.render("admin/users", { 
                 title: "Users",
-                users
+                users,
+                projects,
              });
         } catch (error) {
             res.status(404).json({
@@ -85,18 +98,20 @@ module.exports = {
       },
 
     deleteAllUsers: async function (req, res) {
+        let redirect = ""
+        if (req.params.redirect){redirect = req.params.redirect}
+
         try{ 
             await User.collection.drop()
         } catch (err) {
             console.log(err.message)
         }
         console.log("Successful deletion"); // Replace with Flash
-        res.redirect("/admin/users");
+        res.redirect(`/admin/${redirect}`);
     },
     createProjectWithCompany: async function (req, res) {
 
         // Warning sus code below
-
         try {
             await User.findOne({ userType: "company" }).sort({createdAt: -1}).exec(function (err, foundCompany) {
                 const projectDetails = new Project({
@@ -108,7 +123,6 @@ module.exports = {
                     endDate: moment(faker.faker.date.future()).format("YYYY-MM-DD"),
                     projectOwnerID: foundCompany,
                 });
-
                 if (!foundCompany) {
                     console.log("No Company"); // Replace with Flash
                     res.redirect("/admin/projects");
@@ -120,6 +134,33 @@ module.exports = {
                 }
             });
 
+        } catch (err) {
+            res.status(404).json({
+                status: "fail",
+                message: err.message,
+            });
+        }
+    },
+    createProjectWithSpecificCompany: async function (req, res) {
+
+        // Should combine with code above
+
+        let companyID = req.params.id
+
+        try {
+            const projectDetails = new Project({
+                name: faker.faker.company.bsAdjective(),
+                description: faker.faker.company.catchPhrase(),
+                location: faker.faker.address.cityName(),
+                image: faker.faker.image.abstract(),
+                startDate: moment(faker.faker.date.soon(5)).format("YYYY-MM-DD"),
+                endDate: moment(faker.faker.date.future()).format("YYYY-MM-DD"),
+                projectOwnerID: companyID,
+            });
+            projectDetails.save(function (err) {
+                if (err) throw err;
+                res.redirect("/admin/users");
+            });
         } catch (err) {
             res.status(404).json({
                 status: "fail",
@@ -169,22 +210,40 @@ module.exports = {
     },
 
     deleteAllProjects: async function (req, res) {
+        let redirect = ""
+        if (req.params.redirect){redirect = req.params.redirect}
+
         try{ 
             await Project.collection.drop()
         } catch (err) {
-            console.log(error.message)
+            console.log(err.message)
         }
-        console.log("Successful deletion");
-        res.redirect("/admin/projects");
+        console.log("Successful deletion"); // Replace with Flash
+        res.redirect(`/admin/${redirect}`);
     },
 
-    deleteUProject: async function (req, res) {
+    deleteProject: async function (req, res) {
         try {
           await Project.findByIdAndRemove(req.params.id);
         } catch (err) {
-            console.log(error.message)
+            console.log(err.message)
         }
         console.log("Successful deletion");
         res.redirect("/admin/projects");
       },
+
+    signupStudentToProject: async function (req, res) {
+        let projectID = req.params.projectid
+        let studentID = req.params.studentid
+
+        let project = await Project.findById(projectID)
+        try {
+          project.studentIDs.push(studentID)
+          await project.save();
+          res.redirect("/admin/users")
+        } catch (error) {
+          console.log(error.message);
+        }
+      },
+
 }

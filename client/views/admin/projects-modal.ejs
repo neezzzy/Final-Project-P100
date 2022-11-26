@@ -1,0 +1,41 @@
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-xl">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h5 class="modal-title" id="modaltitle">Signup to project</h5>
+		  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		</div>
+		<div class="modal-body">
+            <table class="table table-striped">	
+                <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Company</th>
+                            <th scope="col">Location</th>
+                            <th scope="col">Start</th>
+                            <th scope="col">End</th>
+                            <!-- TODO Add Confirmation -->
+                            <th scope="col">✅</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% projects.forEach(project => { %>
+                            <tr>
+                                <td><%= project.name %></td>
+                                <td><%= project.projectOwnerID.name %></td>
+                                <td><%= project.location %></td>
+                                <td><%= project.startDate %></td>
+                                <td><%= project.endDate %></td>
+                                <td><a class="project-link text-decoration-none" href="/admin/student-signup/<%= project._id %>">✔</a></td>
+                            </tr>
+                        <% }) %>
+                </tbody>
+            </table>
+		</div>
+		<div class="modal-footer">
+      Signup a user, or click close to reload.  Or problemsome.
+      <a href="/admin/users" class="btn btn-secondary">Close</a>
+		</div>
+	  </div>
+	</div>
+  </div>
