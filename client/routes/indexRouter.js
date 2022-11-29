@@ -33,7 +33,7 @@ router.post("/projects-add", projectController.saveProject);
 router.post("/project-edit/:id", projectController.editProject);
 
 router.get("/profile-add/:userType", userController.addProfile);
-
+router.get("/my-projects/", userController.getUserProjects);
 router.get("/profile-edit/:id", userController.getProfileByID);
 router.post("/profile-edit/:id", userController.editProfile);
 

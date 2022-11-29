@@ -18,34 +18,71 @@
                   <%= project.name %>
                 </h4>
 
-                <p class="card-text"><span class="fw-bold">Project ID: </span><%= project.id %></p>
-                <p class="card-text"><span class="fw-bold">Company: </span>                  
-                    <%= project.projectOwnerID.name %>
+                <p class="card-text"><span class="fw-bold">Project ID: </span>
+                  <%= project.id %>
+                </p>
+                <p class="card-text"><span class="fw-bold">Company: </span>
+                  <%= project.projectOwnerID.name %>
                 </p>
                 <p class="card-text"><span class="fw-bold">Student(s): </span>
-                  <% project.studentIDs.forEach(student=> { %>    
-                      <p><%= student.name %></p>
-                  <% }) %>
-              </p>
-                <p class="card-text"><span class="fw-bold">Description: </span><%= project.description %></p>
-                <p class="card-text"><span class="fw-bold">Location: </span><%= project.location %></p>
-                <p class="card-text"><span class="fw-bold">Start Date:</span> <%= project.startDate %></p>
-                <p class="card-text"><span class="fw-bold">End Date:</span> <%= project.endDate %></p>
+                  <% project.studentIDs.forEach(student=> { %>
+                    <p>
+                      <%= student.name %>
+                    </p>
+                    <% }) %>
+                </p>
+                <p class="card-text"><span class="fw-bold">Description: </span>
+                  <%= project.description %>
+                </p>
+                <p class="card-text"><span class="fw-bold">Location: </span>
+                  <%= project.location %>
+                </p>
+                <p class="card-text"><span class="fw-bold">Start Date:</span>
+                  <%= project.startDate %>
+                </p>
+                <p class="card-text"><span class="fw-bold">End Date:</span>
+                  <%= project.endDate %>
+                </p>
 
                 <% if (isCompany) { %>
                   <a class="btn btn-primary text-decoration-none" href="/project-edit/<%=project.id %>">Edit</a>
-                  <a class="btn btn-danger text-decoration-none" href="/project-delete/<%=project.id%>">Delete</a>
-                <% } %>
-                
-                <% if (isStudent) { %>
-                  <a class="btn btn-danger text-decoration-none" href="/project-signup/<%=project.id%>">Sign Up</a>
-                <% } %>
+
+                  <div class="modal fade" id="confirmDeleteModal" tabindex="-1"
+                    aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h1 class="modal-title fs-5" id="confirmDeleteModalLabel">Delete Project: <%=project.name %></h1>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          This action cannot be undone.
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                          <a class="btn btn-danger text-decoration-none" href="/project-delete/<%=project.id%>">Yes,
+                            delete it</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                    data-bs-target="#confirmDeleteModal">Delete
+                  </button>
+
+                  <% } %>
+
+                    <% if (isStudent) { %>
+                      <a class="btn btn-danger text-decoration-none" href="/project-signup/<%=project.id%>">Sign
+                        Up</a>
+                      <% } %>
 
               </div>
             </div>
           </div>
         </div>
-      <% }) %>
+        <% }) %>
       <div class=" d-flex flex-row footer mt-auto py-3 ">
       
           <p  class=" w-50 text-decoration-none d-flex flex-row" class="card-text"><span class="fw-bold">Total Pages: </span><%=  totalPages %></p>
@@ -65,7 +102,9 @@
         </ul>
       </div>
     </div>
-    <%- include ('partials/footer') %>
+          <%- include ('partials/footer') %>
+
   </body>
+
 </html>
 

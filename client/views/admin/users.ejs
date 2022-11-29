@@ -1,97 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include ('../partials/header') %>
+
 	<body class="admin-bg">
-			<div class="container">
-				<%- include ('nav') %>
-                <a href="/admin/create-user/student" class="btn btn-success">Create Student</a>
-                <a href="/admin/create-user/company" class="btn btn-success">Create Company</a>
+		<div class="container">
+			<%- include ('nav') %>
+				<a href="/admin/create-user/student" class="btn btn-success">Create Student</a>
+				<a href="/admin/create-user/company" class="btn btn-success">Create Company</a>
 				<!-- TODO Add Confirmation -->
-                <a href="/admin/delete-all-users/users" class="btn btn-danger">Delete All Users</a>
-                <a href="/admin/delete-all-projects/users" class="btn btn-danger">Delete All Projects</a>
-				
-				<table class="table table-striped">	
+				<a href="/admin/delete-all-users/users" class="btn btn-danger">Delete All Users</a>
+				<a href="/admin/delete-all-projects/users" class="btn btn-danger">Delete All Projects</a>
+
+				<table class="table table-striped">
 					<thead>
-							<tr>
-								<th scope="col">userType</th>
-								<th scope="col" class="text-center">Project</th>
-								<th scope="col">Projects</th>
-								<th scope="col">Name</th>
-								<th scope="col">email</th>
-								<th scope="col">Country</th>
-								<th scope="col">Image</th>
-								<!-- TODO Add Confirmation -->
-								<th scope="col"><a href="/admin/delete-all-users/" class="text-decoration-none">❌</a></th>
-							</tr>
-						</thead>
-						<tbody>
-							<% users.forEach(user => { %>
-								<tr id="s<%= user._id %>" 
-									data-userType="<%= user.userType %>"
-									data-name="<%= user.name %>"
-									data-email="<%= user.email %>"
-									data-country="<%= user.country %>"
-									data-image="<%= user.image %>"
-									 >
+						<tr>
+							<th scope="col">userType</th>
+							<th scope="col" class="text-center">Project</th>
+							<th scope="col">Projects</th>
+							<th scope="col">Name</th>
+							<th scope="col">email</th>
+							<th scope="col">Country</th>
+							<th scope="col">Image</th>
+							<!-- TODO Add Confirmation -->
+							<th scope="col"><a href="/admin/delete-all-users/" class="text-decoration-none">❌</a></th>
+						</tr>
+					</thead>
+					<tbody>
+						<% users.forEach(user=> { %>
+							<tr id="s<%= user._id %>" 
+								data-userType="<%= user.userType %>" 
+								data-name="<%= user.name %>"
+								data-email="<%= user.email %>" 
+								data-country="<%= user.country %>" 
+								data-image="<%= user.image %>"
+							>
 								<td class="align-middle"><%= user.userType %></td>
 								<td class="text-center align-middle">
-
-									<% if (user.userType === "student") { %>
-										<a class="modal-pop btn btn-success" id="<%= user.name %>" 
-											href="/admin/projects-modal/"  
-											data-bs-toggle="modal" data-bs-target="#exampleModal" data-studentid="<%= user._id %>">Signup</a></td>
+									<% if (user.userType==="student" ) { %>
+										<a	class="modal-pop btn btn-success" 
+											id="<%= user.name %>" 
+											href="/admin/projects-modal/"
+											data-bs-toggle="modal" 
+											data-bs-target="#projectsModal"
+											data-studentid="<%= user._id %>">
+											Signup
+										</a>
 									<% } else { %>
-										<a class="btn btn-success" href="/admin/create-project/company/<%= user._id %>">Create</a></td>
-									<% } %>					
-
+										<a class="btn btn-success" href="/admin/create-project/company/<%= user._id %>">Create</a>
+									<% } %>
+								</td>
 								<td class="align-middle">
-									
-									<!-- student -->
-									<% projects.forEach(project=> { %>    
-										<% project.studentIDs.forEach(student=> { %>    
-											<%  if (JSON.stringify(student._id) === JSON.stringify(user._id)) { %>
-												<%= project.name %> 
-											<% } %>
-										<% }) %>
+								<!-- student -->
+								<% projects.forEach(project=> { %>
+									<% project.studentIDs.forEach(student=> { %>
+										<% if (JSON.stringify(student._id)===JSON.stringify(user._id)) { %>
+											<%= project.name %>
+										<% } %>
 									<% }) %>
+								<% }) %>
 
-									<!-- company -->
-									<% projects.forEach(project=> { %>    
-											<%  if (JSON.stringify(project.projectOwnerID._id) === JSON.stringify(user._id)) { %>
-												<%= project.name %> 
-											<% } %>
-									<% }) %>
-
+								<!-- company -->
+								<% projects.forEach(project=> { %>
+									<% if (JSON.stringify(project.projectOwnerID._id)===JSON.stringify(user._id)) { %>
+										<%= project.name %>
+									<% } %>
+								<% }) %>
 
 								<td class="align-middle"><%= user.name %></td>
 								<td class="align-middle"><%= user.email %></td>
 								<td class="align-middle"><%= user.country %></td>
-								<td class="align-middle"><img src="<%= user.image %>" width="100" title="<%= user.image %>" alt="<%= user.image %>"></td>
-								<td class="align-middle"><a href="/admin/delete-user/<%= user._id %>" class="btn btn-danger">X</a></td>
-								</tr>
+								<td class="align-middle">
+									<img src="<%= user.image %>" 
+										 width="100" 
+										 title="<%= user.image %>" 
+										 alt="<%= user.image %>">
+								</td>
+								<td class="align-middle">
+									<a href="/admin/delete-user/<%= user._id %>" class="btn btn-danger">X</a>
+								</td>
+							</tr>
 
-							<% }) %>
+						<% }) %>
 					</tbody>
 				</table>
-            </div>
+		</div>
 
-			<script>
-				$(document).ready(function() {
-					$(".modal-pop").on('click' , function () {
-						let activeStudentID = $(this).data('studentid')
-						let activeStudentName = document.querySelector(`#s${activeStudentID}`).getAttribute('data-name')
-						document.getElementById("modaltitle").textContent=`Signup ${activeStudentName} to a Project`
+		<script>
+			$(document).ready(function () {
+				$(".modal-pop").on('click', function () {
+					let activeStudentID = $(this).data('studentid')
+					let activeStudentName = document.querySelector(`#s${activeStudentID}`).getAttribute('data-name')
+					document.getElementById("modaltitle").textContent = `Signup ${activeStudentName} to a Project`
 
-						$('.project-link').each(function(){
-							// TODO change to base href maybe
-     						// parse string html regex
-							// find first "/" from right
-							this.href += `/${activeStudentID}`;
-						});
+					$('.project-link').each(function () {
+						// TODO change to base href maybe
+						// parse string html regex
+						// find first "/" from right
+						this.href += `/${activeStudentID}`;
 					});
 				});
-			</script>
-  			<%- include ('projects-modal') %>
-			<%- include ('../partials/footer') %>
+			});
+		</script>
+		<%- include ('projects-modal') %>
+		<%- include ('../partials/footer') %>
 	</body>
+
 </html>
