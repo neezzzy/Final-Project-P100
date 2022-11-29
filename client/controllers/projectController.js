@@ -2,30 +2,42 @@ const User = require("../models/userModel");
 const Project = require("../models/projectModel");
 const moment = require("moment");
 module.exports = {
-
   fetchAllProjects: async function (req, res) {
-
     let isStudent;
     let isCompany;
+    const { page = 1, limit = 3 } = req.query;
 
     try {
-      let projects = await Project.find().populate({path: 'projectOwnerID'}).populate({path: 'studentIDs'});
+      let projects = await Project.find()
+        .limit(limit * 1)
+        .skip((page - 1) * limit)
+        .populate({ path: "projectOwnerID" })
+        .populate({ path: "studentIDs" });
+
+      const count = await Project.countDocuments();
+      totalPages = Math.ceil(count / limit);
       let userAuth0 = req.oidc.user;
-      
+
       if (req.isAuthenticated) {
         const user = await User.findOne({ email: userAuth0.email });
-        if (user.userType === "student") {isStudent = true;}
-        if (user.userType === "company") {isCompany = true;}
+        if (user.userType === "student") {
+          isStudent = true;
+        }
+        if (user.userType === "company") {
+          isCompany = true;
+        }
       }
-
+      //http://localhost:3000/projects/?page=4
       res.render("projects", {
         title: "Projects",
         isAuthenticated: req.isAuthenticated,
         projects,
+        totalPages,
+        count,
+        currentPage: page,
         isStudent,
         isCompany,
       });
-
     } catch (err) {
       res.status(404).json({
         status: "fail",
@@ -35,7 +47,6 @@ module.exports = {
   },
 
   saveProject: async function (req, res) {
-
     const projectDetails = new Project({
       name: req.body.projectName,
       description: req.body.projectDescription,
@@ -55,12 +66,12 @@ module.exports = {
   signupToProject: async function (req, res) {
     let userAuth0 = req.oidc.user;
     const student = await User.findOne({ email: userAuth0.email });
-    let projectID = req.params.id
-    let project = await Project.findById(projectID)
+    let projectID = req.params.id;
+    let project = await Project.findById(projectID);
     try {
-      project.studentIDs.push(student._id)
+      project.studentIDs.push(student._id);
       await project.save();
-      res.redirect("/projects")
+      res.redirect("/projects");
     } catch (error) {
       console.log(error.message);
     }
@@ -89,9 +100,8 @@ module.exports = {
       res.render("projects-add", {
         title: "Project Add",
         isAuthenticated: req.isAuthenticated,
-        user
+        user,
       });
-
     } catch (error) {
       console.log(error);
     }
