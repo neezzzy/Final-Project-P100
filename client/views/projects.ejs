@@ -5,9 +5,9 @@
   <body class="container">
 
     <%- include ('partials/nav') %>
-
+    
       <% projects.forEach(project=> { %>
-        <div class="card mb-3">
+        <div class="card mb-3 ">
           <div class='row g-0'>
             <div class='col-md-4'>
               <img src="<%= project.image %>" class="img-fluid p-3 w-100" alt="project image">
@@ -46,18 +46,26 @@
           </div>
         </div>
       <% }) %>
-      <p class="card-text"><span class="fw-bold">total pages: </span><%= totalPages %></p>
-        <ul >
+      <div class=" d-flex flex-row footer mt-auto py-3 ">
+      
+          <p  class=" w-50 text-decoration-none d-flex flex-row" class="card-text"><span class="fw-bold">Total Pages: </span><%=  totalPages %></p>
+        
+            <ul class="pagination">
+          
           <% for (let i = 1; i<= totalPages; i++){ %>
-           <li>
-            <a href="?page=<%= i; %>">
-              <%= i; %>
+           <li class="page-item">
+            <a class="page-link"
+            href="?page=<%= i; %>">
+              <%= i; %>  
               </a>
             
            </li>
             <% } %> 
-        
+          </div>
         </ul>
+      </div>
+    </div>
     <%- include ('partials/footer') %>
   </body>
 </html>
+
