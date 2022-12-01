@@ -51,39 +51,35 @@
                   </button>
                   <% } %>
 
-                    <% if (isStudent) { %>
-                      <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                        data-bs-target="#confirmSignUpModal">Sign Up
-                      </button>
-                      <% } %>
+                <% if (isStudent) { %>
+                  <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                    data-bs-target="#confirmSignUpModal">Sign Up
+                  </button>
+                  <% } %>
+                  
               </div>
             </div>
           </div>
         </div>
-        <%- include('partials/modal-delete', {project}); %>
-          <%- include('partials/modal-signup', {project}); %>
-            <% }) %>
-              <div class=" d-flex flex-row footer mt-auto py-3 ">
+      <%- include('partials/modal-delete', {project}); %>
+      <%- include('partials/modal-signup', {project}); %>
+    <% }) %>
 
-                <p class=" w-50 text-decoration-none d-flex flex-row" class="card-text"><span class="fw-bold">Total
-                    Pages:
-                  </span>
-                  <%= totalPages %>
-                </p>
-
-                <ul class="pagination">
-                  <% for (let i=1; i<=totalPages; i++){ %>
-                    <li class="page-item">
-                      <a class="page-link" href="?page=<%= i; %>">
-                        <%= i; %>
-                      </a>
-                    </li>
-                    <% } %>
-              </div>
-              </ul>
-              </div>
-              </div>
-              <%- include ('partials/footer') %>
-  </body>
+      <div class=" d-flex flex-row footer mt-auto py-3 ">
+        <p class=" w-50 text-decoration-none d-flex flex-row" class="card-text">
+          <span class="fw-bold">Total Pages: </span> <%= totalPages %>
+        </p>
+        <ul class="pagination">
+          <% for (let i=1; i<=totalPages; i++){ %>
+            <li class="page-item">
+              <a class="page-link" href="?page=<%= i; %>">
+                <%= i; %>
+              </a>
+            </li>
+            <% } %>
+        </ul>
+      </div>
+      <%- include ('partials/footer') %>
+</body>
 
 </html>
