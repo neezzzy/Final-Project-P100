@@ -3,9 +3,7 @@
 <%- include ('partials/header') %>
 
   <body class="container">
-
     <%- include ('partials/nav') %>
-
       <% projects.forEach(project=> { %>
         <div class="card mb-3 ">
           <div class='row g-0'>
@@ -17,7 +15,6 @@
                 <h4 class="card-title text-uppercase">
                   <%= project.name %>
                 </h4>
-
                 <p class="card-text"><span class="fw-bold">Project ID: </span>
                   <%= project.id %>
                 </p>
@@ -45,50 +42,48 @@
                 </p>
 
                 <% if (isCompany) { %>
-                  <a class="btn btn-primary text-decoration-none" href="/project-edit/<%=project.id %>">Edit</a>
+                  <button class="btn btn-primary">
+                    <a class="text-decoration-none text-light" href="/project-edit/<%=project.id %>">Edit</a>
+                  </button>
 
-                  <%- include('partials/modal-delete', {project}); %>
+                  <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                    data-bs-target="#confirmDeleteModal">Delete
+                  </button>
+                  <% } %>
 
-                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                      data-bs-target="#confirmDeleteModal">Delete
-                    </button>
-                    <% } %>
-
-                      <% if (isStudent) { %>
-
-                        <%- include('partials/modal-signup', {project}); %>
-                          <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                            data-bs-target="#confirmSignUpModal">Sign Up
-                          </button>
-                          <% } %>
+                    <% if (isStudent) { %>
+                      <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                        data-bs-target="#confirmSignUpModal">Sign Up
+                      </button>
+                      <% } %>
               </div>
             </div>
           </div>
         </div>
-        <% }) %>
-          <div class=" d-flex flex-row footer mt-auto py-3 ">
+        <%- include('partials/modal-delete', {project}); %>
+          <%- include('partials/modal-signup', {project}); %>
+            <% }) %>
+              <div class=" d-flex flex-row footer mt-auto py-3 ">
 
-            <p class=" w-50 text-decoration-none d-flex flex-row" class="card-text"><span class="fw-bold">Total Pages:
-              </span>
-              <%= totalPages %>
-            </p>
+                <p class=" w-50 text-decoration-none d-flex flex-row" class="card-text"><span class="fw-bold">Total
+                    Pages:
+                  </span>
+                  <%= totalPages %>
+                </p>
 
-            <ul class="pagination">
-
-              <% for (let i=1; i<=totalPages; i++){ %>
-                <li class="page-item">
-                  <a class="page-link" href="?page=<%= i; %>">
-                    <%= i; %>
-                  </a>
-
-                </li>
-                <% } %>
-          </div>
-          </ul>
-          </div>
-          </div>
-          <%- include ('partials/footer') %>
-
+                <ul class="pagination">
+                  <% for (let i=1; i<=totalPages; i++){ %>
+                    <li class="page-item">
+                      <a class="page-link" href="?page=<%= i; %>">
+                        <%= i; %>
+                      </a>
+                    </li>
+                    <% } %>
+              </div>
+              </ul>
+              </div>
+              </div>
+              <%- include ('partials/footer') %>
   </body>
 
 </html>
