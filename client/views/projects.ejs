@@ -3,9 +3,7 @@
 <%- include ('partials/header') %>
 
   <body class="container">
-
     <%- include ('partials/nav') %>
-    
       <% projects.forEach(project=> { %>
         <div class="card mb-3 ">
           <div class='row g-0'>
@@ -17,7 +15,6 @@
                 <h4 class="card-title text-uppercase">
                   <%= project.name %>
                 </h4>
-
                 <p class="card-text"><span class="fw-bold">Project ID: </span>
                   <%= project.id %>
                 </p>
@@ -45,66 +42,44 @@
                 </p>
 
                 <% if (isCompany) { %>
-                  <a class="btn btn-primary text-decoration-none" href="/project-edit/<%=project.id %>">Edit</a>
-
-                  <div class="modal fade" id="confirmDeleteModal" tabindex="-1"
-                    aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h1 class="modal-title fs-5" id="confirmDeleteModalLabel">Delete Project: <%=project.name %></h1>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                          This action cannot be undone.
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                          <a class="btn btn-danger text-decoration-none" href="/project-delete/<%=project.id%>">Yes,
-                            delete it</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  <button class="btn btn-primary">
+                    <a class="text-decoration-none text-light" href="/project-edit/<%=project.id %>">Edit</a>
+                  </button>
 
                   <button type="button" class="btn btn-danger" data-bs-toggle="modal"
                     data-bs-target="#confirmDeleteModal">Delete
                   </button>
-
                   <% } %>
 
-                    <% if (isStudent) { %>
-                      <a class="btn btn-danger text-decoration-none" href="/project-signup/<%=project.id%>">Sign
-                        Up</a>
-                      <% } %>
-
+                <% if (isStudent) { %>
+                  <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                    data-bs-target="#confirmSignUpModal">Sign Up
+                  </button>
+                  <% } %>
+                  
               </div>
             </div>
           </div>
         </div>
-        <% }) %>
+      <%- include('partials/modal-delete', {project}); %>
+      <%- include('partials/modal-signup', {project}); %>
+    <% }) %>
+
       <div class=" d-flex flex-row footer mt-auto py-3 ">
-      
-          <p  class=" w-50 text-decoration-none d-flex flex-row" class="card-text"><span class="fw-bold">Total Pages: </span><%=  totalPages %></p>
-        
-            <ul class="pagination">
-          
-          <% for (let i = 1; i<= totalPages; i++){ %>
-           <li class="page-item">
-            <a class="page-link"
-            href="?page=<%= i; %>">
-              <%= i; %>  
+        <p class=" w-50 text-decoration-none d-flex flex-row" class="card-text">
+          <span class="fw-bold">Total Pages: </span> <%= totalPages %>
+        </p>
+        <ul class="pagination">
+          <% for (let i=1; i<=totalPages; i++){ %>
+            <li class="page-item">
+              <a class="page-link" href="?page=<%= i; %>">
+                <%= i; %>
               </a>
-            
-           </li>
-            <% } %> 
-          </div>
+            </li>
+            <% } %>
         </ul>
       </div>
-    </div>
-          <%- include ('partials/footer') %>
-
-  </body>
+      <%- include ('partials/footer') %>
+</body>
 
 </html>
-
