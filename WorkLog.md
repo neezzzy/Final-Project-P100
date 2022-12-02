@@ -1,3 +1,51 @@
+- 2022-11-26
+- 2h
+  - Worked on
+      - Modify Page Style
+      - Refactor Profile Page
+      RN, MG, PF
+- 2022-11-25
+- 2h
+  - Worked on
+      - Modal Confirmation on Delete and Add Projects Buttons
+      - Display User Projects
+      RN, MG, PF
+- 2022-11-25
+- 2h
+  - Worked on
+      - Add Pagination Functionality on Projects Page 
+      - Display User Projects
+      PF, MG
+- 2022-11-24
+- 6h
+  - Worked on
+      - Add UserType on SignUp Flow
+      - Create Admin View
+      - Create Project, Nuke, Create Project by Company Sign Up Buttons on Admin
+      - Add Student Sign Up to Project
+      Mg
+- 2022-11-22
+- 4h
+  - Worked on
+      - Connect Mongo Database
+      - Add Mongo Schema
+      - Add Company and Student Logic on Projects Page
+      - Add Sign Up and Register Page on Redirect
+      - Add User upon Login Flow
+      RN, MG, PF
+- 2022-11-19
+- 1h
+  - Worked on
+      - Get UserId
+      - Refactor Public Scripts
+      - Display Company Name in Projects
+      RN, MG, PF
+- 2022-11-18
+- 3h
+  - Worked on
+      - Add Confetti on Log in
+      - Refact MVC
+   -RN
 - 2022-11-17
 - 1h
   - Worked on
