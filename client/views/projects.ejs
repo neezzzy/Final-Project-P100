@@ -8,7 +8,7 @@
         <div class="card mb-3 ">
           <div class='row g-0'>
             <div class='col-md-4'>
-              <img src="<%= project.image %>" class="img-fluid p-3 w-100" alt="project image">
+              <img src="<%= project.image %>" class="img-fluid p-5" alt="project image">
             </div>
             <div class='col-md-8'>
               <div class="card-body">
@@ -47,13 +47,13 @@
                   </button>
 
                   <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                    data-bs-target="#confirmDeleteModal">Delete
+                    data-bs-target="#delete-p<%=project.id%>">Delete
                   </button>
                   <% } %>
 
                 <% if (isStudent) { %>
                   <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                    data-bs-target="#confirmSignUpModal">Sign Up
+                    data-bs-target="#signup-p<%=project.id%>">Sign Up
                   </button>
                   <% } %>
                   
@@ -67,7 +67,7 @@
 
       <div class=" d-flex flex-row footer mt-auto py-3 ">
         <p class=" w-50 text-decoration-none d-flex flex-row" class="card-text">
-          <span class="fw-bold">Total Pages: </span> <%= totalPages %>
+          <span class="fw-bold">Total Pages:</span>&nbsp;<%= totalPages %>
         </p>
         <ul class="pagination">
           <% for (let i=1; i<=totalPages; i++){ %>

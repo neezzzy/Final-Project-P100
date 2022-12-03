@@ -10,7 +10,7 @@
         <div class="card mb-3">
           <div class='row g-0'>
             <div class='col-md-4'>
-              <img src="<%= project.image %>" class="img-fluid p-3 w-100" alt="project image">
+              <img src="<%= project.image %>" class="img-fluid p-5 w-100" alt="project image">
             </div>
             <div class='col-md-8'>
               <div class="card-body">
@@ -37,9 +37,7 @@
                   <a class="btn btn-danger text-decoration-none" href="/project-delete/<%=project.id%>">Delete</a>
                 <% } %>
                 
-                <% if (isStudent) { %>
-                  <a class="btn btn-danger text-decoration-none" href="/project-signup/<%=project.id%>">Sign Up</a>
-                <% } %>
+
                 
               </div>
             </div>
