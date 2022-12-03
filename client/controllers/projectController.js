@@ -47,11 +47,14 @@ module.exports = {
   },
 
   saveProject: async function (req, res) {
+    let userAuth0 = req.oidc.user;
+    const user = await User.findOne({ email: userAuth0.email });
     const projectDetails = new Project({
       name: req.body.projectName,
       description: req.body.projectDescription,
       location: req.body.projectLocation,
       image: req.oidc.user.picture,
+      image: user.image,
       startDate: moment(req.body.projectStartDate).format("YYYY-MM-DD"),
       endDate: moment(req.body.projectEndDate).format("YYYY-MM-DD"),
       projectOwnerID: req.body.projectOwnerID,
