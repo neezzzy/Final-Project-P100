@@ -27,15 +27,17 @@ const projectSchema = new mongoose.Schema(
     },
     projectOwnerID: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "User"
-    }
-    // createdBy: {
-    //   type: String,
-    //   required: true,
-    // }
+      ref: "User",
+      required: true,
+    },
+    studentIDs: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+      },
+    ],
   },
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Project", projectSchema)
-
+module.exports = mongoose.model("Project", projectSchema);

@@ -1,4 +1,5 @@
 const User = require("../models/userModel");
+const Project = require("../models/projectModel");
 const axios = require("axios");
 require("dotenv").config();
 
@@ -7,18 +8,53 @@ module.exports = {
     let userAuth0 = req.oidc.user;
     try {
       const user = await User.findOne({ email: userAuth0.email });
-      // get your bloody API key here https://api.orb-intelligence.com/docs/
-      const response = await axios.get(
-        `https://api.orb-intelligence.com/3/match/?api_key=${process.env.ORB_API_KEY}&name=${user.name}&country=${user.country}`
-      );
       res.render("profile", {
         title: "Profile",
         isAuthenticated: req.isAuthenticated,
         user,
-        data: response.data.results,
       });
     } catch (error) {
       console.log(error);
+    }
+  },
+
+  getUserProjects: async function (req, res) {
+
+    let isStudent;
+    let isCompany;
+    let userAuth0 = req.oidc.user;
+    
+    try {
+      let user
+      let projects
+      // didn't work
+      // let queryParam = {};
+      if (req.isAuthenticated) {
+        user = await User.findOne({ email: userAuth0.email });
+        if (user.userType === "student") {isStudent = true; }
+        if (user.userType === "company") {isCompany = true; } // queryParam["projectOwnerID"]=user._id
+      }
+
+      if (isStudent){
+      projects = await Project.find({studentIDs: user._id}).populate({path: 'projectOwnerID'}).populate({path: 'studentIDs'});
+      }
+      if (isCompany){
+      projects = await Project.find({projectOwnerID: user._id}).populate({path: 'projectOwnerID'}).populate({path: 'studentIDs'});
+      }
+
+      res.render("my-projects", {
+        title: "My Projects",
+        isAuthenticated: req.isAuthenticated,
+        projects,
+        isStudent,
+        isCompany,
+      });
+
+    } catch (err) {
+      res.status(404).json({
+        status: "fail",
+        message: err.message,
+      });
     }
   },
 

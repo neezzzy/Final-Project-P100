@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include ('../partials/header') %>
+	<body class="admin-bg">
+			<div class="container">
+				<%- include ('nav') %>
+				<a href="/admin/delete-all-users/" class="btn btn-success">Delete All Users</a>
+				<a href="/admin/delete-all-projects/" class="btn btn-success">Delete All Projects</a>
+				<a href="/admin/nuke/" class="btn btn-danger">Nuke</a>
+			</div>
+			<%- include ('../partials/footer') %>
+	</body>
+</html>

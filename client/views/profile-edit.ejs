@@ -1,36 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include ('partials/header') %>
-
   <body>
     <div class="container">
       <%- include ('partials/nav') %>
-        <h2 class="text-center">Edit Profile Form</h2>
-        <form action="/profile-edit/<%=user.id%>" method="post">
-          <div class="form-group">
-            <label for="userName">Enter profile's name: </label>
-            <input value="<%=user.name%>" class="form-control" type="text" name="userName" />
+      <h1>Edit Profile</h1>
+      <form action="/profile-edit/<%=user.id%>" method="post">
+        <div class="container rounded bg-white mt-5 mb-5">
+          <div class="row">
+              <div class="col-md-3">
+                  <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                    <img class="img-fluid rounded mt-5" src="<%= user.image %>">
+                    <span class="font-weight-bold"><%= user.userType %></span>
+                    <span class="font-weight-bold"><%= user.name %></span>
+                    <span class="text-black-50"><%= user.email %></span>
+                  </div>
+              </div>
+              <div class="col-md-6">
+                  <div class="p-3 py-5">
+                      <div class="row mt-2">
+                        <div class="col-md-12 form-group"><label class="fw-bold" for="userName">Name</label><input type="text"
+                            class="form-control" value="<%= user.name %>" name="userName"></div>
+                        </div>
+                        <div class="row mt-3">
+                          <div class="col-md-12 form-group"><label class="fw-bold" for="userEmail">Email</label><input type="email"
+                              class="form-control" value="<%= user.email %>" name="userEmail"></div>
+                        </div>
+                        <div class="row mt-3">
+                          <div class="col-md-12 form-group"><label class="fw-bold" for="userCountry">Country</label><input type="text"
+                              class="form-control" value="<%= user.country %>" name="userCountry"></div>
+                        </div>
+                        <div class="row mt-3">
+                          <div class="col-md-12 form-group"><label class="fw-bold" for="userImage">Image URL</label><input type="text"
+                              class="form-control" value="<%= user.image %>" name="userImage"></div>
+                        </div>
+                      <div class="row mt-5">
+                        <button type="submit" class="btn btn-success">Save Profile</button>
+                      </div>
+                  </div>
+              </div>
           </div>
-
-          <div class="form-group">
-            <label for="userCountry">Enter user's country: </label>
-            <input value="<%=user.country%>" class="form-control" type="text" name="userCountry" />
-          </div>
-
-          <div class="form-group">
-            <label for="userEmail">Enter user's email: </label>
-            <input value="<%=user.email%>" class="form-control" type="email" name="userEmail" />
-          </div>
-          <div class="form-group">
-            <label for="userImage">Enter user's image: </label>
-            <input value="<%=user.image%>" class="form-control" type="text" name="userImage" />
-          </div>
-
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+        </div>
+      </form>
     </div>
-
-    <%- include ('partials/footer') %>
   </body>
 
 </html>
